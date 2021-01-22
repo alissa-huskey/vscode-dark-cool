@@ -1,0 +1,2 @@
+2021-01-22 style command palette
+2021-01-22 make color variables and build script

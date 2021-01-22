@@ -1,0 +1,26 @@
+{
+    "name": "dark-cool",
+    "displayName": "Dark and Cool",
+    "description": "A personal dark theme with cool colors.",
+    "version": "0.0.1",
+    "extensionKind": "ui",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alissa-huskey/dark-cool-vscode.git"
+    },
+    "engines": {
+        "vscode": "^1.47.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Dark and Cool",
+                "uiTheme": "vs-dark",
+                "path": "./themes/dark-cool-color-theme.json"
+            }
+        ]
+    }
+}
