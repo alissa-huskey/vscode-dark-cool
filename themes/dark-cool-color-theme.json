@@ -390,7 +390,7 @@
     "tab.activeBorderTop": "#6D57FFBB",                      // 1 dark raincoat, purple
 
     // tab.unfocusedActiveBorderTop: Top border for the active tab in an inactive editor group
-    "tab.unfocusedActiveBorderTop:": "#000000",                      // 1 dark raincoat, purple
+    // "tab.unfocusedActiveBorderTop:": "#000000",                      // 1 dark raincoat, purple
 
     // tab.unfocusedActiveBackground: Active Tab background color in an inactive editor group.
     // tab.activeForeground: Active Tab foreground color in an active group.
@@ -456,7 +456,7 @@
     // ~~~~~~~~~~~~~~~~~~~~~~~~~
 
     // editor.wordHighlightBackground: Background color of a symbol during read-access, for example when reading a variable. The color must not be opaque so as not to hide underlying decorations.
-    "editor.wordHighlightBackground": "#61AFEF4F",
+    // "editor.wordHighlightBackground": "#61AFEF4F",
 
     // editor.wordHighlightBorder: Border color of a symbol during read-access, for example when reading a variable.
     // editor.wordHighlightStrongBackground: Background color of a symbol during write-access, for example when writing to a variable. The color must not be opaque so as not to hide underlying decorations.
@@ -688,12 +688,76 @@
     // checkbox.foreground: Foreground color of checkbox widget.
     // checkbox.border: Border color of checkbox widget.
 
-    //
-    "gitDecoration.modifiedResourceForeground": "#a2bffc",
+
+    // VERSION CONTROL
+    // ---------------------------------------------------------------------------------
+    
+    // gitDecoration.deletedResourceForeground: Used for file labels and the SCM viewlet.
     "gitDecoration.deletedResourceForeground": "#EF535090",
-    "gitDecoration.untrackkedResourceForeground": "#addb67ff",
+
+    // gitDecoration.modifiedResourceForeground: Used for file labels and the SCM viewlet.
+    "gitDecoration.modifiedResourceForeground": "#a2bffc",
+
+    // gitDecoration.untrackedResourceForeground: Used for file labels and the SCM viewlet.
+    "gitDecoration.untrackedResourceForeground": "#addb67ff",
+
+    // gitDecoration.ignoredResourceForeground: Used for file labels and the SCM viewlet.
     "gitDecoration.ignoredResourceForeground": "#395a75",
-    "gitDecoration.conflictingResourceForeground": "#ffeb95cc"
+
+    // gitDecoration.conflictingResourceForeground: Used for file labels and the SCM viewlet.
+    "gitDecoration.conflictingResourceForeground": "#ffeb95cc",
+
+    // gitDecoration.addedResourceForeground: Used for file labels and the SCM viewlet.
+    // gitDecoration.submoduleResourceForeground: Color for submodule resources.
+    // gitDecoration.stageModifiedResourceForeground: Used for file labels and the SCM viewlet.
+    // gitDecoration.stageDeletedResourceForeground: Used for file labels and the SCM viewlet.
+
+
+    // MERGE CONFLICTS
+    // ~~~~~~~~~~~~~~~
+
+    // merge.currentHeaderBackground: Current header background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
+    // merge.currentContentBackground: Current content background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
+    // merge.incomingHeaderBackground: Incoming header background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
+    // merge.incomingContentBackground: Incoming content background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
+    // merge.border: Border color on headers and the splitter in inline merge conflicts.
+    // merge.commonContentBackground: Common ancestor content background in inline merge-conflicts. The color must not be opaque so as not to hide underlying decorations.
+    // merge.commonHeaderBackground: Common ancestor header background in inline merge-conflicts. The color must not be opaque so as not to hide underlying decorations.
+    // editorOverviewRuler.currentContentForeground: Current overview ruler foreground for inline merge conflicts.
+    // editorOverviewRuler.incomingContentForeground: Incoming overview ruler foreground for inline merge conflicts.
+    // editorOverviewRuler.commonContentForeground: Common ancestor overview ruler foreground for inline merge conflicts.
+
+
+    // DIFF EDITOR
+    // ---------------------------------------------------------------------------------
+    
+    // diffEditor.insertedTextBackground: Background color for text that got inserted. The color must not be opaque so as not to hide underlying decorations.
+    // "diffEditor.insertedTextBackground": "#00181655",
+    // "diffEditor.insertedTextBackground": "#001816d0",
+    // "diffEditor.insertedTextBackground": "#132E20",
+    // "diffEditor.insertedTextBackground": "#0f35218f",
+    // "diffEditor.insertedTextBackground": "#0c2c1c71",
+    "diffEditor.insertedTextBackground": "#0c2c2071",
+
+    // diffEditor.insertedTextBorder: Outline color for the text that got inserted.
+    // "diffEditor.insertedTextBorder": "#002724",
+    // "diffEditor.insertedTextBorder": "#079b40",
+
+    // diffEditor.removedTextBackground: Background color for text that got removed. The color must not be opaque so as not to hide underlying decorations.
+    // "diffEditor.removedTextBackground": "#2c080421",
+    // "diffEditor.removedTextBackground": "#360a0552",
+    // "diffEditor.removedTextBackground": "#36050c48",
+    "diffEditor.removedTextBackground": "#36050c3f",
+
+    // diffEditor.removedTextBorder: Outline color for text that got removed.
+    // "diffEditor.removedTextBorder": "#2c0804",
+
+    // diffEditor.border: Border color between the two text editors.
+    "diffEditor.border": "#232530",       // sidebar.border
+
+    // diffEditor.diagonalFill: The diagonal fill is used in side-by-side diff views.
+    "diffEditor.diagonalFill": "#22222275",
+
 
 
 	},
