@@ -8,7 +8,10 @@
 		"nord",
 		"siebar",
 		"submodule",
+		"tablefmt",
 		"untracked",
 		"vaporwave"
-	]
+	],
+	"python.formatting.provider": "black",
+	"python.pythonPath": ".venv/bin/python3.8"
 }

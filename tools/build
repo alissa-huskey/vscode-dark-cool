@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# build, package and install the extension
+#   restart vscode to see changes
+#
+
+set -Eeo pipefail
+
+rootdir="$(cd "${0%/*}/.." && pwd -P)"
+
+run() {
+  local cmd="${*}"
+  cmd="${cmd/$PWD/.}"
+  echo -e "\033[90m> ${cmd}\033[0m"
+
+  "$@" || exit
+
+  echo
+}
+
+run ${rootdir}/tools/generate --all
+run vsce package
+run code --install-extension dark-cool-color-theme-*.vsix
+run mv dark-cool-color-theme-*.vsix build/

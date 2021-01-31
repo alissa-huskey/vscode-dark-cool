@@ -1,1 +1,12 @@
 x 2021-01-30 2021-01-30 add screenshots to readme
+x 2021-01-31 2021-01-30 add colors to readme
+x 2021-01-31 2021-01-30 add features to readme
+x 2021-01-31 2021-01-30 add TOC to readme
+x 2021-01-31 2021-01-22 make color variables and build script
+x 2021-01-31 2021-01-30 add known issues to readme (lack of diff contrast)
+x 2021-01-31 2021-01-30 generate theme from colors.json
+x 2021-01-31 2021-01-31 add readme TOC
+x 2021-01-31 2021-01-31 update changelog
+x 2021-01-31 2021-01-31 make v0.0.1 tag @housekeeping
+x 2021-01-31 2021-01-31 make v0.0.3 tag @housekeeping
+x 2021-01-31 2021-01-31 generate actual color diffs from v0.0.2 @housekeeping

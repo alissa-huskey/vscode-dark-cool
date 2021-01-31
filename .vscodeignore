@@ -1,0 +1,10 @@
+**/.pycache/**
+.vscode/*
+.venv/**
+.tags
+.todo/*
+tmp/**
+tools/*
+samples/**
+pyproject.toml
+poetry.lock

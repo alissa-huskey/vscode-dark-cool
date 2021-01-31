@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# usage extract <source> <dest>
+
+#   strip the comments from a vscode theme file <source> and extract the colors
+#     dict contents then sort and write to <dest>.
+
+#   used for comparing two versions of theme.
+
+abort() {
+  echo "Error ${*}"
+  usage
+  exit 1
+}
+
+usage() {
+  printf "usage: %s <source> <dest>\n" "${0##*/}"
+}
+
+main() {
+  local script source="${1}" dest="${2%.json}.json"
+
+  if [[ "${*}" =~ -h ]] || [[ "${*}" =~ --help ]]; then
+    usage
+    exit
+  fi
+
+read -r -d '' script <<'EOS' || :
+# only get the colors dict contents
+/"colors": \{/, /\},/ !d
+
+# delete comment lines
+\_^\s+//_d
+
+# strip trailing comments
+s_\s+//.*$__
+
+# delete empty lines
+/^\s*$/d
+EOS
+
+  [[ $# -lt 2 ]] && abort "Missing arguments (got ${#}: ${*})"
+
+  [[ $# -gt 2 ]] && abort "Too many arguments: (got ${#}: ${*})"
+
+  [[ -s "${source}" ]] || abort "Source file missing or empty: '${source}'"
+
+  touch "${dest}" || abort "Problem with destination path."
+
+  sed -Ee "${script}" "${source}" | sort > "${dest}"
+
+}
+
+main ${1:+"$@"}

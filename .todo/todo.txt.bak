@@ -1,11 +1,47 @@
-2021-01-22 style command palette
-2021-01-22 make color variables and build script
-2021-01-30 add colors to readme
-2021-01-30 generate theme from colors.json
-2021-01-30 add features to readme
-2021-01-30 add TOC to readme
-2021-01-30 publish to marketplace
-2021-01-30 add marketplace link to readme
-2021-01-30 add known issues to readme (lack of diff contrast)
-2021-01-30 integrate token colors from Jayson's theme suggestion
-2021-01-30 .todo
+2021-01-22 style command palette @feature
+2021-01-30 publish to marketplace @housekeeping
+2021-01-30 add marketplace link to readme @housekeeping
+(B) 2021-01-30 integrate token colors from Jayson's theme suggestion @feature
+(B) 2021-01-31 add recommended settings to readme @housekeeping
+2021-01-31 fix search/word/bracket matching highlight @feature
+2021-01-31 convert build to use StyleDictionary @housekeeping
+(A) 2021-01-31 finish feature description on readme @housekeeping
+2021-01-31 add screenshots to individual feature @housekeeping
+2021-01-31 figure out where command palette "recently used" text color comes from @feature
+2021-01-31 review style of markdown previews @feature
+(B) 2021-01-31 cleanup colors.jsonc @housekeeping
+2021-01-31 cleanup tokens.jsonc @housekeeping
+(A) 2021-01-31 update screenshots to reflect theme changes in 0.0.3 @housekeeping
+2021-01-31 test other status bar states @feature
+2021-01-31 style merge conflicts @feature
+2021-01-31 style gitDecoration.*Resource* @feature
+2021-01-31 style editorGutter.* @feature
+2021-01-31 style editorMarkerNavigationError.* @feature
+2021-01-31 style problems*Icon.* @feature
+2021-01-31 style editor.(Error|Warning|Info|Hint).* @feature
+2021-01-31 style settings.* @feature
+2021-01-31 style notebook.* @feature
+2021-01-31 style debugView.*, debugTokenExpression.*, debugToolBar..* @feature
+2021-01-31 review and improve panel*.* @feature
+2021-01-31 style inputValidation.* @feature
+(B) 2021-01-31 style statusBarItem.remote* @feature
+2021-01-31 style charts.* @feature
+2021-01-31 style editorLightBulb.* @feature
+2021-01-31 style minimap @feature
+2021-01-31 style testExplorer.* @feature
+2021-01-31 style terminal.* @feature
+2021-01-31 style symbolIcon.* @feature
+2021-01-31 style quickInput*.* @feature
+2021-01-31 style peekView*.* @feature
+2021-01-31 style pickerGroup*.* @feature
+2021-01-31 style notification*.* @feature
+2021-01-31 style gitlens.* @feature
+2021-01-31 style extensionBadge.* @feature
+(B) 2021-01-31 style editorPane.background @feature
+(B) 2021-01-31 style editorRuler.* @feature
+2021-01-31 style editorSuggestWidget.* @feature
+2021-01-31 style editor.stackFrame* @feature
+2021-01-31 style editor.snippet* @feature
+2021-01-31 style walkThrough.embeddedEditorBackground @feature
+(B) 2021-01-31 style breadcrumbs*.* @feature
+(B) 2021-01-31 statusBar.noFolderBackground @feature

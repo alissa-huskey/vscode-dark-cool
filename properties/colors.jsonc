@@ -1,0 +1,239 @@
+// d6cabb     // Pistachio Shell
+// "#f4ddc3"  // Jakarta (peach)
+// #eabbbb   // soft blush
+{ 
+	"groups": [
+		{
+			"element": "Frame BG",
+			"hex": "0a0a0a",
+			"color-desc": "near black",
+			"desc": "frame-like workbench elements",
+			"examples": [ "activity bar", "sidebar section titles" ],
+			"theme-colors": [
+				"editorGroupHeader.tabsBackground",
+				"statusBar.background",
+				"tab.activeBackground",
+				"activityBar.background",
+				"activityBar.border",
+				"panel.background",
+				"editorGutter.background",
+				"editorGroup.border",
+				"statusBar.noFolderBackground",
+				"sideBarSectionHeader.background"
+			]
+		},
+		{
+			"element": "Editor BG",
+			"hex": "0f0f0f",
+			"color-desc": "charcoal",
+			"desc": "editor",
+			"theme-colors": [
+				"editor.background"
+			]
+		},
+		{
+			"element": "Area BG",
+			"hex": "101316",
+			"color-desc": "midnight",
+			"desc": "interactive areas",
+			"examples": [ "sidebar", "widgets" ],
+			"theme-colors": [
+				"debugToolBar.background",
+				"list.inactiveSelectionBackground",
+				"editorWidget.background",
+				"input.background",
+				"dropdown.background",
+				"dropdown.listBackground",
+				"inputOption.activeBackground",
+				"sideBar.background",
+				"statusBar.debuggingBackground"
+			]
+		},
+		{
+			"element": "Area Border",
+			"hex": "232530",
+			"color-desc": "black gray",
+			"desc": "subtle border separating areas",
+			"examples": [ "between sidebar and editor" ],
+			"theme-colors": [
+				"sideBar.border",
+				"diffEditor.border",
+				"contrastBorder",
+				"input.border",
+				"statusBar.noFolderBorder",
+				"dropdown.border"
+			]
+		},
+		{
+			"element": "Text FG",
+			"hex": "AAB1C0",
+			"color-desc": "light gray",
+			"desc": "overall text",
+			"examples": [ "editor text" ],
+			"theme-colors": [
+				"foreground",
+				"editor.foreground"
+			]
+		},
+		{
+			"element": "Guide (Active)",
+			// "hex": "6262a430",
+			"hex": "6D57FFBB",
+			"color-desc": "purple",
+			"desc": "accent line indicating the active area or element",
+			"examples": [ "indentation guides", "active tab" ],
+			"theme-colors": [
+				"activityBar.activeBorder",
+				"panelTitle.activeBorder",
+				"tab.activeBorder",
+				// "tab.activeBorderTop",
+				"editorIndentGuide.activeBackground",
+				"textBlockQuote.border",
+				"tree.indentGuidesStroke"
+			]
+		},
+		{
+			"element": "Text FG (Emphasis)",
+			// 148b97 (peacock)
+			"hex": "80CBC4",
+			"color-desc": "mint",
+			"desc": "emphasized text",
+			"examples": [ "links", "typed letters in command palette" ],
+			"theme-colors": [
+				"textLink.foreground",
+				"list.highlightForeground",
+				"list.inactiveSelectionForeground"
+			]
+		},
+		{
+			"element": "Icon BG (Emphasis)",
+			"hex": "88c0d0",
+			"color-desc": "light blue",
+			"desc": "emphasized icons",
+			"examples": [ "SCM change count" ],
+			"theme-colors": [
+				"badge.background",
+				"statusBarItem.remoteBackground",
+				"activityBarBadge.background"
+			]
+		},
+		{
+			"element": "Cursor BG",
+			"hex": "000000",
+			"color-desc": "teal",
+			"desc": "cursor",
+			"examples": [],
+			"theme-colors": [
+				"editorCursor.background"
+			],
+			"readme": false
+		},
+		{
+			"element": "Area Border (Focus)",
+			"hex": "008097",
+			"color-desc": "teal",
+			"desc": "accent indicating the active/focus area",
+			"examples": [ "input boxes" ],
+			"theme-colors": [
+				"focusBorder",
+				"widget.shadow"
+			]
+		},
+		{
+			"element": "Item BG (Selection)",
+			"hex": "4c5ead58",
+			"color-desc": "dark purple",
+			"desc": "selected list item",
+			"examples": [ "file explorer" ],
+			"theme-colors": [
+				"list.activeSelectionBackground",
+				"list.focusBackground"
+			],
+			"readme": false
+		},
+		{
+			"element": "Item BG (Drag & Drop)",
+			"hex": "67769640",
+			"color-desc": "lavender",
+			"desc": "list item drag & drop feedback",
+			"examples": [ "file explorer" ],
+			"theme-colors": [
+				"list.dropBackground",
+				"statusBarItem.hoverBackground",
+				"sideBar.dropBackground"
+			],
+			"readme": false
+		},
+		{
+			"element": "Text FG (Active)",
+			"hex": "008097",
+			"color-desc": "teal",
+			"desc": "active links",
+			"theme-colors": [
+				"textLink.activeForeground",
+				"editorLink.activeForeground"
+			],
+			"readme": false
+		},
+		{
+			"element": "Icon FG (Emphasis)",
+			"hex": "000000",
+			"color-desc": "black",
+			"desc": "foreground color of emphasized areas on sidebar and activity bar",
+			"theme-colors": [
+				"activityBarBadge.foreground"
+			],
+			"readme": false
+		},
+		{
+			"element": "Document Text FG",
+			"hex": "242938",
+			"color-desc": "blue black",
+			"desc": "document text",
+			"examples": [ "welcome page" ],
+			"theme-colors": [
+				"textCodeBlock.background",
+				"textBlockQuote.background"
+			],
+			"readme": false
+		}
+
+],
+	"individual": {
+		"statusBar.debuggingForeground": "009688",
+		"tab.inactiveBackground": "1f2326",
+
+		"editor.selectionBackground": "add6ff26", // TODO -- join?
+		"selection.background": "88c0d099",
+		"statusBar.border": "364958",  // TODO: should be area border
+
+		"editorLineNumber.foreground": "495162", // TODO: join with other active text? (tab filename, near white)
+
+		"editorCursor.foreground": "008097", // TODO: join with other accent FG?
+		"editor.lineHighlightBorder": "000000",
+
+		"editor.lineHighlightBackground": "024f5940",
+
+		"button.background": "2b313c",
+		"button.secondaryBackground": "1e0c31",
+
+		"diffEditor.insertedTextBackground": "0c2c2071",
+		"diffEditor.removedTextBackground": "36050c3f",
+		"diffEditor.diagonalFill": "22222275",
+
+		"list.hoverBackground": "1b2432",
+
+		"editor.findMatchBackground": "61AFEF4F",
+		"editor.findMatchHighlightBackground": "000000",
+		"editor.findMatchHighlightBorder": "61AFEF9F",
+		"editor.wordHighlightBackground": "61AFEF4F",
+		"editor.wordHighlightBorder": "61AFEF9F",
+		"editor.wordHighlightStrongBackground": "61AFEF4F",
+		"editor.wordHighlightStrongBorder": "61AFEF9F",
+		"gitDecoration.deletedResourceForeground": "EF535090",
+		"gitDecoration.modifiedResourceForeground": "a2bffc",
+		"gitDecoration.untrackedResourceForeground": "addb67ff",
+		"gitDecoration.ignoredResourceForeground": "395a75",
+		"gitDecoration.conflictingResourceForeground": "ffeb95cc"
+	}
+}

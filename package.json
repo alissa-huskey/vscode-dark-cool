@@ -3,7 +3,7 @@
     "displayName": "Dark and Cool Theme",
     "description": "A personal dark theme with cool colors.",
     "publisher": "alissahuskey",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "extensionKind": [ "ui" ],
     "repository": {
         "type": "git",

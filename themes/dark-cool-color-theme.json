@@ -1,1254 +1,547 @@
 {
-	"name": "My Theme",
-	"type": "dark",
-	"colors": {
-
-    // BASE
-    // ---------------------------------------------------------------------------------
-
-    // foreground: Overall foreground color. This color is only used if not overridden by a component.
-    // "foreground": "#D5D8DA",                                  // vaporwave
-    "foreground": "#AAB1C0",                                   // 1 dark raincoat
-
-    // contrastBorder: An extra border around elements to separate them from others for greater contrast.
-    // "contrastBorder": "#080A0F",                               // pretentious name
-    "contrastBorder": "#232530",                               // azure shades, sidebar border
-
-    // focusBorder: Overall border color for focused elements.
-    // "focusBorder": "#6d57ffbb",                                // 1 dark raincoat, purple
-    // "focusBorder": "#232530",                                // azure shades, sidebar.border
-    // "focusBorder": "#007aae8e",                                // black ocean
-    "focusBorder": "#008097",                                // textLink.activeForeground
-
-
-    // widget.shadow: Shadow color of widgets such as Find/Replace inside the editor.
-    // "widget.shadow": "#000000",                             //
-    "widget.shadow": "#008097",                                // textLink.activeForeground
-
-    // selection.background: Background color of text selections in the workbench
-    //    (for input fields or text areas, does not apply to selections within the editor and the terminal).
-    // "selection.background": "#4c5ead58",                             // kay dark, dark purple
-    "selection.background": "#88c0d099",                             // nord extra dark
-
-    // descriptionForeground: Foreground color for description text providing additional information, for example for a label.
-    // errorForeground: Overall foreground color for error messages (this color is only used if not overridden by a component).
-    // icon.foreground: The default color for icons in the workbench.
-    // sash.hoverBorder: The hover border color for draggable sashes.
-    // contrastActiveBorder: An extra border around active elements to separate them from others for greater contrast.
-
-    // BADGE CONTROL
-    // Badges are small information labels, for example, search results count.
-    // ---------------------------------------------------------------------------------
-
-    "badge.background": "#88c0d0",
-
-    // INPUT
-    // ~~~~~
-    // Colors for input controls such as in the Search view or the Find/Replace dialog.
-
-    // input.background: Input box background.
-    // "input.background": "#3b4252",        // nord extra dark
-    "input.background": "#101316",        // siebar.background
-
-    // input.border: Input box border.
-    "input.border": "#232530",
-
-    // inputOption.activeBackground: Background color of activated options in input fields.
-    "inputOption.activeBackground": "#3b4252",
-
-    // inputOption.activeBorder: Border color of activated options in input fields.
-    // "inputOption.activeBorder": "#008097",
-    // "inputOption.activeBorder": "#6d57ffbb",
-    "inputOption.activeBorder": "#FF0000",
-
-    // inputOption.activeForeground: Foreground color of activated options in input fields.
-    // input.foreground: Input box foreground.
-    // input.placeholderForeground: Input box foreground color for placeholder text.
-    // inputValidation.errorBackground: Input validation background color for error severity.
-    // inputValidation.errorForeground: Input validation foreground color for error severity.
-    // inputValidation.errorBorder: Input validation border color for error severity.
-    // inputValidation.infoBackground: Input validation background color for information severity.
-    // "inputValidation.infoBackground": "#1e0c31",  // test purple
-    // inputValidation.infoForeground: Input validation foreground color for information severity.
-    // inputValidation.infoBorder: Input validation border color for information severity.
-    // inputValidation.warningBackground: Input validation background color for information warning.
-    // inputValidation.warningForeground: Input validation foreground color for warning severity.
-    // inputValidation.warningBorder: Input validation border color for warning severity.
-
-
-    // DROPDOWNS
-    // ~~~~~~~~~
-
-    // dropdown.border: Dropdown border.
-    "dropdown.border": "#232530",                                     // sidebar.border
-
-    // dropdown.background: Dropdown background.
-    "dropdown.background": "#101316",                                 // sidebar.background
-
-    // dropdown.listBackground: Dropdown list background.
-    "dropdown.listBackground": "#101316",                             // sidebar.background
-
-    // dropdown.foreground: Dropdown foreground.
-    // "dropdown.foreground": "",
-
-
-    // SIDEBAR
-    // ---------------------------------------------------------------------------------
-
-    // sideBar.background: Side Bar background color.
-    // "sideBar.background": "#1e0c31",                        // g dark haiti hc (test purple)
-    // "sideBar.background": "#0d0d0d",                        //  azure dark
-    // "sidebar.background": "#0f111a",                        // material darker, editor background
-    // "sideBar.background": "#080a0c",                        // seti
-    // "sideBar.background": "#0a0e14",                         //  ayu dark
-    // "sideBar.background": "#2a2d37",                        //  ariake dark
-    // "sideBar.background": "#1a1c22",                        // nord extra dark
-    // "sideBar.background": "#0f0f0f",                        // azure dark, editor.background
-    // "sideBar.background": "#101416",                        // dolch
-    "sideBar.background": "#101316",                        // black ocean
-
-    // sideBarSectionHeader.background: Side Bar section header background color.
-    // "sideBarSectionHeader.background": "#0e1112"            // seti
-    // "sideBarSectionHeader.background": "#292e39",           // Verdandi Altered
-    "sideBarSectionHeader.background": "#0a0a0a",            // azure shades
-
-    // sideBar.border: Side Bar border color on the side separating the editor.
-    // "sideBar.border": "#364958",                             // seti
-    "sideBar.border": "#232530",                             // azure shades
-
-    // sideBar.dropBackground: Drag and drop feedback color for the side bar sections. The color should have transparency so that the side bar sections can still shine through.
-    "sideBar.dropBackground": "#67769640",                             // list.dropBackground
-
-    // sideBarTitle.foreground: Side Bar title foreground color.
-    // "sideBarTitle.foreground": "#bbbbbb",                    // seti
-    // "sideBarTitle.foreground": "#eff2f7",                    // azure shades
-    // "sideBarTitle.foreground": "#83868C",                    // delta
-
-    // sideBarSectionHeader.foreground: Side Bar section header foreground color.
-    // sideBarSectionHeader.border: Side bar section header border color.
-    // sideBar.foreground: Side Bar foreground color. The Side Bar is the container for views like Explorer and Search.
-
-    // LISTS AND TREES
-    // Colors for list and trees like the File Explorer. An active list/tree has keyboard focus, an inactive does not
-    // ---------------------------------------------------------------------------------
-
-    // INDENT GUIDE
-    // ~~~~~~~~~~~~
-
-    // tree.indentGuidesStroke: Tree Widget's stroke color for indent guides.
-    "tree.indentGuidesStroke": "#6D57FFBB",
-
-    // HOVER & DRAG AND DROP
-    // ~~~~~~~~~~~~~~~~~~~~~
-
-    // list.hoverBackground: List/Tree background when hovering over items using the mouse.
-    // "list.hoverBackground": "#67769640",                     // seti
-    "list.hoverBackground": "#1b2432",                     // seti
-
-    // list.dropBackground: List/Tree drag and drop background when moving items around using the mouse.
-    "list.dropBackground": "#67769640",                     // seti
-
-    // list.hoverForeground: List/Tree foreground when hovering over items using the mouse.
-
-    // SELECTED
-    // ~~~~~~~~
-
-    // list.activeSelectionBackground: List/Tree background color for the selected item when the list/tree is active.
-    "list.activeSelectionBackground": "#4c5ead58",        // kay dark, dark purple
-
-    // list.activeSelectionForeground: List/Tree foreground color for the selected item when the list/tree is active.
-    // "list.activeSelectionForeground": "#FFFFFF",
-
-    // OPENED
-    // ~~~~~~
-
-    // list.inactiveSelectionBackground: List/Tree background color for the selected item when the list/tree is inactive.
-    // "list.inactiveSelectionBackground": "#4c5ead58",        // kay dark
-    "list.inactiveSelectionBackground": "#101316",        // sidebar.background
-
-    // list.inactiveSelectionForeground: List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.
-    "list.inactiveSelectionForeground": "#80CBC4",    // textLink.foreground
-
-    // FOCUSED
-    // ~~~~~~~
-
-    // list.focusBackground: List/Tree background color for the focused item // when the list/tree is active.
-    // list.inactiveFocusBackground: List background color for the focused item when the list is inactive. An active list has keyboard focus, an inactive does not. Currently only supported in lists.
-
-    // SEARCH
-    // ~~~~~~
-
-    // list.highlightForeground: List/Tree foreground color of the match highlights when searching inside the list/tree.
-
-    // listFilterWidget.outline: List/Tree Filter Widget's outline color of typed text when searching inside the list/tree.
-    "listFilterWidget.outline": "#ffcc66",                                         // test yellow
-
-    // list.filterMatchBackground: Background color of the filtered matches in lists and trees.
-    // list.filterMatchBorder: Border color of the filtered matches in lists and trees.
-    "list.filterMatchBorder": "#ffcc66",                                         // test yellow
-
-    // listFilterWidget.background: List/Tree Filter background color of typed text when searching inside the list/tree.
-    "listFilterWidget.background": "#1e0c31",                                         // test purple
-
-    // listFilterWidget.noMatchesOutline: List/Tree Filter Widget's outline color when no match is found of typed text when searching inside the list/tree.
-
-    // ERRORS
-    // ~~~~~~
-
-    // list.invalidItemForeground: List/Tree foreground color for invalid items, for example an unresolved root in explorer.
-    // list.errorForeground: Foreground color of list items containing errors.
-    // list.warningForeground: Foreground color of list items containing warnings.
-    // list.deemphasizedForeground: List/Tree foreground color for items that are deemphasized.
-
-    // TITLE BAR
-    // ---------------------------------------------------------------------------------
-
-    // titleBar.activeBackground: Title Bar background when the window is active.
-    // titleBar.activeForeground: Title Bar foreground when the window is active.
-    // titleBar.inactiveBackground: Title Bar background when the window is inactive.
-    // titleBar.inactiveForeground: Title Bar foreground when the window is inactive.
-    // titleBar.border: Title bar border color.
-
-    // ACTIVITY BAR
-    //   The Activity Bar is displayed either on the far left or right of the
-    //   workbench and allows fast switching between views of the Side Bar.
-    // ---------------------------------------------------------------------------------
-
-    // activityBar.background: Activity Bar background color.
-    // "activityBar.background": "#080a0c",                                     // seti
-    "activityBar.background": "#0a0a0a",                                 // azure dark
-
-    // activityBar.border: Activity Bar border color with the Side Bar.
-    // "activityBar.border": "#364958",                      // seti
-    "activityBar.border": "#0a0a0a",                      // azure dark
-
-    // activityBarBadge.background: Activity notification badge background color.
-    // "activityBarBadge.background": "#007acc",                                // seti
-    "activityBarBadge.background": "#88c0d0",                                // delta
-
-    // activityBarBadge.foreground: Activity notification badge foreground color.
-    "activityBarBadge.foreground": "#000000",                                // delta
-
-    // activityBar.activeBorder: Activity Bar active indicator border color.
-    "activityBar.activeBorder": "#6D57FFBB",                                // 1 dark raincoat
-
-    // activityBar.dropBorder: Drag and drop feedback color for the activity bar items. The activity bar is showing on the far left or right and allows to switch between views of the side bar.
-    // activityBar.foreground: Activity Bar foreground color (for example used for the icons).
-    // activityBar.inactiveForeground: Activity Bar item foreground color when it is inactive.
-    // activityBar.activeBackground: Activity Bar optional background color for the active element.
-    // activityBar.activeFocusBorder: Activity bar focus border color for the active item.
-
-    // PANEL
-    // ---------------------------------------------------------------------------------
-
-    // panel.background: Panel background color.
-    // "panel.background": "#080a0c",                        // seti
-    "panel.background": "#0a0a0a",                        // azure dark
-
-    // panelTitle.activeBorder: Border color for the active panel title.
-    "panelTitle.activeBorder": "#6D57FFBB",
-
-    // panel.border: Panel border color to separate the panel from the editor.
-
-    // panel.dropBorder: Drag and drop feedback color for the panel titles. Panels are shown below the editor area and contain views like output and integrated terminal.
-    // panelTitle.activeForeground: Title color for the active panel.
-    // panelTitle.inactiveForeground: Title color for the inactive panel.
-    // panelInput.border: Input box border for inputs in the panel.
-    // panelSection.border: Panel section border color used when multiple views are stacked horizontally in the panel. Panels are shown below the editor area and contain views like output and integrated terminal.
-    // panelSection.dropBackground: Drag and drop feedback color for the panel sections. The color should have transparency so that the panel sections can still shine through. Panels are shown below the editor area and contain views like output and integrated terminal.
-    // panelSectionHeader.background: Panel section header background color. Panels are shown below the editor area and contain views like output and integrated terminal.
-    // panelSectionHeader.foreground: Panel section header foreground color. Panels are shown below the editor area and contain views like output and integrated terminal.
-    // panelSectionHeader.border: Panel section header border color used when multiple views are stacked vertically in the panel. Panels are shown below the editor area and contain views like output and integrated terminal.
-
-    // STATUS BAR
-    // ---------------------------------------------------------------------------------
-
-    // statusBar.background: Standard Status Bar background color.
-    "statusBar.background": "#080a0c",                    // seti
-
-    // statusBar.debuggingBackground: Status Bar background color when a program is being debugged.
-    "statusBar.debuggingBackground": "#0e3f3b",
-
-    // statusBar.border: Status Bar border color separating the Status Bar and editor.
-    "statusBar.border": "#364958",                        // seti
-
-    // statusBarItem.hoverBackground: Status Bar item background color when hovering.
-    // "statusBarItem.hoverBackground": "#1b2432",
-    "statusBarItem.hoverBackground": "#67769640",  // seti
-
-    // statusBarItem.prominentBackground: Status Bar prominent items background color.
-    "statusBarItem.prominentBackground": "#1e0c31",  // test purple
-
-    // statusBar.foreground: Status Bar foreground color.
-    // statusBar.debuggingForeground: Status Bar foreground color when a program is being debugged.
-    // statusBar.debuggingBorder: Status Bar border color separating the Status Bar and editor when a program is being debugged.
-    // statusBar.noFolderForeground: Status Bar foreground color when no folder is opened.
-    // statusBar.noFolderBackground: Status Bar background color when no folder is opened.
-    // statusBar.noFolderBorder: Status Bar border color separating the Status Bar and editor when no folder is opened.
-    // statusBarItem.activeBackground: Status Bar item background color when clicking.
-    // statusBarItem.prominentForeground: Status Bar prominent items foreground color.
-    // statusBarItem.prominentHoverBackground: Status Bar prominent items background color when hovering.
-    // statusBarItem.remoteBackground: Background color for the remote indicator on the status bar.
-    // statusBarItem.remoteForeground: Foreground color for the remote indicator on the status bar.
-    // statusBarItem.errorBackground: Status bar error items background color. Error items stand out from other status bar entries to indicate error conditions.
-    // statusBarItem.errorForeground: Status bar error items foreground color. Error items stand out from other status bar entries to indicate error conditions.
-
-    // MENU BARS
-
-    // menu.background: Background color of menu items.
-    "menu.background": "#1e0c31",  // test purple
-
-    // menubar.selectionForeground: Foreground color of the selected menu item in the menubar.
-    // menubar.selectionBackground: Background color of the selected menu item in the menubar.
-    // menubar.selectionBorder: Border color of the selected menu item in the menubar.
-    // menu.foreground: Foreground color of menu items.
-    // menu.selectionForeground: Foreground color of the selected menu item in menus.
-    // menu.selectionBackground: Background color of the selected menu item in menus.
-    // menu.selectionBorder: Border color of the selected menu item in menus.
-    "menu.selectionBorder": "#FF0000",  // test purple
-    // menu.separatorBackground: Color of a separator menu item in menus.
-    // menu.border: Border color of menus.
-
-    // DEBUGGER
-
-    // debugToolBar.background: Debug toolbar background color.
-    "debugToolBar.background": "#101316",                        // sidebar.background
-
-    // debugToolBar.border: Debug toolbar border color.
-    // editor.stackFrameHighlightBackground: Background color of the top stack frame highlight in the editor.
-    // editor.focusedStackFrameHighlightBackground: Background color of the focused stack frame highlight in the editor.
-    // debugView.exceptionLabelForeground: Foreground color for a label shown in the CALL STACK view when the debugger breaks on an exception
-    // debugView.exceptionLabelBackground: Background color for a label shown in the CALL STACK view when the debugger breaks on an exception
-    // debugView.stateLabelForeground: Foreground color for a label in the CALL STACK view showing the current session's or thread's state
-    // debugView.stateLabelBackground: Background color for a label in the CALL STACK view showing the current session's or thread's state
-    // debugView.valueChangedHighlight: Color used to highlight value changes in the debug views (ie. in the Variables view)
-    // debugTokenExpression.name: Foreground color for the token names shown in debug views (ie. the Variables or Watch view)
-    // debugTokenExpression.value: Foreground color for the token values shown in debug views
-    // debugTokenExpression.string: Foreground color for strings in debug views
-    // debugTokenExpression.boolean: Foreground color for booleans in debug views
-    // debugTokenExpression.number: Foreground color for numbers in debug views
-    // debugTokenExpression.error: Foreground color for expression errors in debug views
-
-    // SETTINGS EDITOR COLORS
-    // ~~~~~~~~~~~~~~~~~~~~~~
-
-    // settings.headerForeground: The foreground color for a section header or active title.
-    // settings.modifiedItemIndicator: The line that indicates a modified setting.
-    // settings.dropdownBackground: Dropdown background.
-    // settings.dropdownForeground: Dropdown foreground.
-    // settings.dropdownBorder: Dropdown border.
-    // settings.dropdownListBorder: Dropdown list border.
-    // settings.checkboxBackground: Checkbox background.
-    // settings.checkboxForeground: Checkbox foreground.
-    // settings.checkboxBorder: Checkbox border.
-    // settings.textInputBackground: Text input box background.
-    // settings.textInputForeground: Text input box foreground.
-    // settings.textInputBorder: Text input box border.
-    // settings.numberInputBackground: Number input box background.
-    // settings.numberInputForeground: Number input box foreground.
-    // settings.numberInputBorder: Number input box border.
-    // settings.focusedRowBackground: Background color of a focused setting row.
-    // notebook.focusedRowBorder: Border of a focused setting row.
-    // notebook.rowHoverBackground: Border color of a hovered setting row.
-
-
-    // EDITOR GROUPS
-    // https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
-    // ---------------------------------------------------------------------------------
-
-    // editorGroup.border: Color to separate multiple editor groups from each other.
-    "editorGroup.border": "#080A0F",                  // pretentious name
-
-    // editorGroupHeader.tabsBackground: Background color of the Tabs container.
-    "editorGroupHeader.tabsBackground": "#111213",        // seti
-
-    // editorPane.background: Background color of the editor pane visible on the left and right side of the centered editor layout.
-    "editorPane.background": "#1e0c31",        // test purple
-
-    // editorGroup.dropBackground: Background color when dragging editors around.
-    // editorGroup.emptyBackground: Background color of an empty editor group.
-    // editorGroup.focusedEmptyBorder: Border color of an empty editor group that is focused.
-    // editorGroupHeader.noTabsBackground: Background color of the editor group title header when Tabs are disabled (set "workbench.editor.showTabs": false).
-    // editorGroupHeader.tabsBorder: Border color below the editor tabs control when tabs are enabled.
-    // editorGroupHeader.border: Border color between editor group header and editor (below breadrcumbs if enabled).
-
-    // EDITOR TABS
-    // https://code.visualstudio.com/api/references/theme-color#editor-groups-tabs
-    // ---------------------------------------------------------------------------------
-
-    // tab.border: Border to separate Tabs from each other.
-    // tab.activeBackground: Active Tab background color in an active group.
-    "tab.activeBackground": "#111213",                    // seti
-
-    // tab.activeBorder: Bottom border for the active tab.
-    "tab.activeBorder": "#6D57FFBB",                      // 1 dark raincoat, purple
-
-    // tab.inactiveBackground: Inactive Tab background color.
-    "tab.inactiveBackground": "#1f2326",                  // seti
-
-    // tab.activeBorderTop: Top border for the active tab.
-    "tab.activeBorderTop": "#6D57FFBB",                      // 1 dark raincoat, purple
-
-    // tab.unfocusedActiveBorderTop: Top border for the active tab in an inactive editor group
-    // "tab.unfocusedActiveBorderTop:": "#000000",                      // 1 dark raincoat, purple
-
-    // tab.unfocusedActiveBackground: Active Tab background color in an inactive editor group.
-    // tab.activeForeground: Active Tab foreground color in an active group.
-    // tab.unfocusedActiveBorder: Bottom border for the active tab in an inactive editor group.
-    // tab.lastPinnedBorder: Border on the right of the last pinned editor to separate from unpinned editors.
-    // tab.unfocusedInactiveBackground: Inactive Tab background color in an unfocused group
-    // tab.inactiveForeground: Inactive Tab foreground color in an active group.
-    // tab.unfocusedActiveForeground: Active tab foreground color in an inactive editor group.
-    // tab.unfocusedInactiveForeground: Inactive tab foreground color in an inactive editor group.
-    // tab.hoverBackground: Tab background color when hovering
-    // tab.unfocusedHoverBackground: Tab background color in an unfocused group when hovering
-    // tab.hoverForeground: Tab foreground color when hovering
-    // tab.unfocusedHoverForeground: Tab foreground color in an unfocused group when hovering
-    // tab.hoverBorder: Border to highlight tabs when hovering
-    // tab.unfocusedHoverBorder: Border to highlight tabs in an unfocused group when hovering
-    // tab.activeModifiedBorder: Border on the top of modified (dirty) active tabs in an active group.
-    // tab.inactiveModifiedBorder: Border on the top of modified (dirty) inactive tabs in an active group.
-    // tab.unfocusedActiveModifiedBorder: Border on the top of modified (dirty) active tabs in an unfocused group.
-    // tab.unfocusedInactiveModifiedBorder: Border on the top of modified (dirty) inactive tabs in an unfocused group.
-
-    // EDITOR
-    // ---------------------------------------------------------------------------------
-
-    // EDITOR: Base
-    // ~~~~~~~~~~~~
-
-    // editor.background: Editor background color.
-    // "editor.background": "#0e1112",                       // seti
-    "editor.background": "#0f0f0f",                          // azure dark
-
-    // editor.foreground: Editor default foreground color.
-    // "editor.foreground": "#d4d4d4",                         // seti
-    // "editor.foreground": "#D5D8DA",                         // vaporwave
-    // "editor.foreground": "#8599b3",                            // kay dark
-    "editor.foreground": "#AAB1C0",                      // 1 dark raincoat
-
-    // editorLineNumber.foreground: Color of editor line numbers.
-    "editorLineNumber.foreground": "#495162",         // one dark pro monokai darker
-
-    // editorCursor.foreground: Color of the editor cursor.
-    "editorCursor.foreground": "#008097",             // freshcut
-
-    // editorCursor.background: The background color of the editor cursor. Allows customizing the color of a character overlapped by a block cursor.
-    "editorCursor.background": "#000000",
-
-    // editorWhitespace.foreground: Color of whitespace characters in the editor.
-
-    // editorLink.activeForeground: Color of active links.
-    "editorLink.activeForeground": "#008097",                           //  freshcut
-
-    // EDITOR: Selection
-    // ~~~~~~~~~~~~~~~~~
-
-    // editor.selectionBackground: Color of the editor selection.
-    "editor.selectionBackground": "#add6ff26",   // seti
-
-    // editor.selectionHighlightBackground: Color for regions with the same content as the selection. The color must not be opaque so as not to hide underlying decorations.
-    // editor.inactiveSelectionBackground: Color of the selection in an inactive editor. The color must not be opaque so as not to hide underlying decorations.
-    // editor.selectionForeground: Color of the selected text for high contrast.
-    // editor.selectionHighlightBorder: Border color for regions with the same content as the selection.
-
-    // EDITOR: Word Highlighting
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    // editor.wordHighlightBackground: Background color of a symbol during read-access, for example when reading a variable. The color must not be opaque so as not to hide underlying decorations.
-    // "editor.wordHighlightBackground": "#61AFEF4F",
-
-    // editor.wordHighlightBorder: Border color of a symbol during read-access, for example when reading a variable.
-    // editor.wordHighlightStrongBackground: Background color of a symbol during write-access, for example when writing to a variable. The color must not be opaque so as not to hide underlying decorations.
-    // editor.wordHighlightStrongBorder: Border color of a symbol during write-access, for example when writing to a variable.
-
-    // EDITOR: Find / Replace Highlighting
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    // editor.findMatchBackground: Color of the current search match.
-    // "editor.findMatchBackground": "#121216",          // test blue
-    "editor.findMatchBackground": "#61AFEF4F",          // slack (light blue)
-
-    // editor.findMatchHighlightBackground: Color of the other search matches. The color must not be opaque so as not to hide underlying decorations.
-    "editor.findMatchHighlightBackground": "#000000",          // slack
-
-    // editor.findRangeHighlightBackground: Color the range limiting the search (Enable 'Find in Selection' in the find widget). The color must not be opaque so as not to hide underlying decorations.
-    // "editor.findRangeHighlightBackground": "#2C3666",          // test purple
-
-    // editor.findMatchBorder: Border color of the current search match.
-    "editor.findMatchHighlightBorder": "#61AFEF9F",          // slack
-
-    // editor.findMatchHighlightBorder: Border color of the other search matches.
-    // editor.findRangeHighlightBorder: Border color the range limiting the search (Enable 'Find in Selection' in the find widget).
-
-		"editor.wordHighlightBackground": "#61AFEF4F",
-		"editor.wordHighlightBorder": "#61AFEF9F",
-		"editor.wordHighlightStrongBackground": "#61AFEF4F",
-		"editor.wordHighlightStrongBorder": "#61AFEF9F",
-
-    // searchEditor.findMatchBackground: Color of the editor's results.
-    // searchEditor.findMatchBorder: Border color of the editor's results.
-    // searchEditor.textInputBorder: Search editor text input box border.
-
-    // EDITOR: Hover
-    // ~~~~~~~~~~~~~
-
-    // editor.hoverHighlightBackground: Highlight below the word for which a hover is shown. The color must not be opaque so as not to hide underlying decorations.
-
-    // EDITOR: Current Line
-    // ~~~~~~~~~~~~~~~~~~~~
-
-    //   The current line is typically shown as either background highlight or a border (not both).
-
-    // editorLineNumber.activeForeground: Color of the active editor line number.
-
-    // editor.lineHighlightBackground: Background color for the highlight of line at the cursor position.
-    // "editor.lineHighlightBackground": "#00000050",        // delta
-    // "editor.lineHighlightBackground": "#14344B",        // freshcut
-    "editor.lineHighlightBackground": "#024f5940",
-
-    // editor.lineHighlightBorder: Background color for the border around the line at the cursor position.
-    "editor.lineHighlightBorder": "#000000",        //
-
-
-    // EDITOR: Matching
-    // ~~~~~~~~~~~~~~~~
-
-    // editorBracketMatch.background: Background color behind matching brackets.
-    // editorBracketMatch.border: Color for matching brackets boxes.
-
-    // EDITOR: Folding
-    // ~~~~~~~~~~~~~~~
-
-    // editor.foldBackground: Background color for folded ranges. The color must not be opaque so as not to hide underlying decorations.
-
-    // EDITOR: Ruler
-    // ~~~~~~~~~~~~~
-
-    // Overview Ruler: This ruler is located beneath the scroll bar on the right
-    // edge of the editor and gives an overview of the decorations in the
-    // editor.
-
-    // editorOverviewRuler.background: Background color of the editor overview ruler. Only used when the minimap is enabled and placed on the right side of the editor.
-    // editorOverviewRuler.border: Color of the overview ruler border.
-    // editorOverviewRuler.findMatchForeground: Overview ruler marker color for find matches. The color must not be opaque so as not to hide underlying decorations.
-    // editorOverviewRuler.rangeHighlightForeground: Overview ruler marker color for highlighted ranges, like by the Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
-    // editorOverviewRuler.selectionHighlightForeground: Overview ruler marker color for selection highlights. The color must not be opaque so as not to hide underlying decorations.
-    // editorOverviewRuler.wordHighlightForeground: Overview ruler marker color for symbol highlights. The color must not be opaque so as not to hide underlying decorations.
-    // editorOverviewRuler.wordHighlightStrongForeground: Overview ruler marker color for write-access symbol highlights. The color must not be opaque so as not to hide underlying decorations.
-    // editorOverviewRuler.modifiedForeground: Overview ruler marker color for modified content.
-    // editorOverviewRuler.addedForeground: Overview ruler marker color for added content.
-    // editorOverviewRuler.deletedForeground: Overview ruler marker color for deleted content.
-    // editorOverviewRuler.errorForeground: Overview ruler marker color for errors.
-    // editorOverviewRuler.warningForeground: Overview ruler marker color for warnings.
-    // editorOverviewRuler.infoForeground: Overview ruler marker color for infos.
-    // editorOverviewRuler.bracketMatchForeground: Overview ruler marker color for matching brackets.
-
-    // EDITOR: Errors and Warnings
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    // editorInfo.foreground: Foreground color of info squiggles in the editor.
-    // editorInfo.border: Border color of info boxes in the editor.
-    // editorInfo.background: Background color of info text in the editor. The color must not be opaque so as not to hide underlying decorations.
-
-    // editorHint.foreground: Foreground color of hints in the editor.
-    // editorHint.border: Border color of hint boxes in the editor.
-
-    // editorWarning.foreground: Foreground color of warning squiggles in the editor.
-    // editorWarning.border: Border color of warning boxes in the editor.
-    // editorWarning.background: Background color of warning text in the editor. The color must not be opaque so as not to hide underlying decorations.
-
-    // editorError.foreground: Foreground color of error squiggles in the editor.
-    // editorError.border: Border color of error boxes in the editor.
-    // editorError.background: Background color of error text in the editor. The color must not be opaque so as not to hide underlying decorations.
-
-    // problemsInfoIcon.foreground: The color used for the problems info icon.
-    // problemsWarningIcon.foreground: The color used for the problems warning icon.
-    // problemsErrorIcon.foreground: The color used for the problems error icon.
-
-    // editorUnnecessaryCode.border: Border color of unnecessary (unused) source code in the editor.
-    // editorUnnecessaryCode.opacity: Opacity of unnecessary (unused) source code in the editor. For example, "#000000c0" will render the code with 75% opacity. For high contrast themes, use the "editorUnnecessaryCode.border" theme color to underline unnecessary code instead of fading it out.
-
-    // editorMarkerNavigation.background: Editor marker navigation widget background.
-    // editorMarkerNavigationError.background: Editor marker navigation widget error color.
-    // editorMarkerNavigationWarning.background: Editor marker navigation widget warning color.
-    // editorMarkerNavigationInfo.background: Editor marker navigation widget info color.
-
-    // EDITOR: Gutter
-    // ~~~~~~~~~~~~~~
-
-    // editorGutter.background: Background color of the editor gutter. The gutter contains the glyph margins and the line numbers.
-    // "editorGutter.background": "#080a0c",                 // seti improved
-    // "editorGutter.background": "#0c0e10",                 // black ocean
-    "editorGutter.background": "#0a0a0a",                // azure dark, panel background
-
-    // editorGutter.modifiedBackground: Editor gutter background color for lines that are modified.
-    // editorGutter.addedBackground: Editor gutter background color for lines that are added.
-    // editorGutter.deletedBackground: Editor gutter background color for lines that are deleted.
-    // editorGutter.commentRangeForeground: Editor gutter decoration color for commenting ranges.
-    // editorGutter.foldingControlForeground: Color of the folding control in the editor gutter.
-
-    // EDITOR: Widgets
-    // ~~~~~~~~~~~~~~~
-
-    // editorWidget.background: Background color of editor widgets, such as Find/Replace.
-    "editorWidget.background": "#101316",                // sidebar.background
-
-    // editorWidget.foreground: Foreground color of editor widgets, such as find/replace.
-
-    // editorWidget.border: Border color of the editor widget unless the widget
-    // does not contain a border or defines its own border color.
-
-    // editorWidget.resizeBorder: Border color of the resize bar of editor widgets. The color is only used if the widget chooses to have a resize border and if the color is not overridden by a widget.
-
-    // editorSuggestWidget.background: Background color of the suggestion widget.
-    // editorSuggestWidget.border: Border color of the suggestion widget.
-    // editorSuggestWidget.foreground: Foreground color of the suggestion widget.
-    // editorSuggestWidget.highlightForeground: Color of the match highlights in the suggestion widget.
-    // editorSuggestWidget.selectedBackground: Background color of the selected entry in the suggestion widget.
-
-    // editorHoverWidget.foreground: Foreground color of the editor hover.
-    // editorHoverWidget.background: Background color of the editor hover.
-    // editorHoverWidget.border: Border color of the editor hover.
-    // editorHoverWidget.statusBarBackground: Background color of the editor hover status bar.
-
-    // debugExceptionWidget.background: Exception widget background color.
-    // debugExceptionWidget.border: Exception widget border color.
-
-    // EDITOR: Search Highlighting
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    // Range Highlight: The range highlight is visible when selecting a search result.
-
-    // editor.rangeHighlightBackground: Background color of highlighted ranges, used by Quick Open, Symbol in File and Find features. The color must not be opaque so as not to hide underlying decorations.
-    // editor.rangeHighlightBorder: Background color of the border around highlighted ranges.
-
-    // Symbol Highlight: The symbol highlight is visible when navigating to a symbol via a command such as Go to Definition.
-
-    // editor.symbolHighlightBackground: Background color of highlighted symbol. The color must not be opaque so as not to hide underlying decorations.
-    // editor.symbolHighlightBorder: Background color of the border around highlighted symbols.
-
-    // EDITOR: Indent Guides
-    // ~~~~~~~~~~~~~~~~~~~~~
-
-    // editorIndentGuide.background: Color of the editor indentation guides.
-    // "editorIndentGuide.background": "#404040",            // seti
-    "editorIndentGuide.background": "#6262a430",          // 1 dark raincoat, purple
-
-    // editorIndentGuide.activeBackground: Color of the active editor indentation guide.
-    // "editorIndentGuide.activeBackground": "#707070",      // seti
-    "editorIndentGuide.activeBackground": "#6D57FFBB",    // 1 dark raincoat, purple
-
-    // WINDOW
-    // ---------------------------------------------------------------------------------
-
-    // window.activeBorder: Border color for the active (focused) window.
-    // window.inactiveBorder: Border color for the inactive (unfocused) windows.
-
-    // TEXT COLORS
-    // Colors inside a text document, such as the welcome page.
-    // ---------------------------------------------------------------------------------
-
-    // textCodeBlock.background: Background color for code blocks in text.
-    "textCodeBlock.background": "#242938",                      // G Dark-Minimal (Midnight), editor.background
-
-    // textBlockQuote.background: Background color for block quotes in text.
-    "textBlockQuote.background": "#242938",                      // G Dark-Minimal (Midnight, editor.background
-
-    // textBlockQuote.border: Border color for block quotes in text.
-    "textBlockQuote.border": "#6D57FFBB",
-
-    // textLink.foreground: Foreground color for links in text.
-    "textLink.foreground": "#80CBC4",                           // G Dark-minimal (Midnight),  list.activeSelectionForeground
-
-    // textLink.activeForeground: Foreground color for links in text when clicked on and on mouse hover.
-    "textLink.activeForeground": "#008097",                           //  freshcut
-
-    // textSeparator.foreground: Color for text separators.
-    "textSeparator.foreground": "#FF0000",
-
-    // textPreformat.foreground: Foreground color for preformatted text segments.
-
-
-    // BUTTON CONTROL
-    // A set of colors for button widgets such as Open Folder button in the Explorer of a new window.
-    // ---------------------------------------------------------------------------------
-
-    // button.background: Button background color.
-    "button.background": "#2b313c",                                  // azure shades
-
-    // button.secondaryBackground: Secondary button background color.
-    "button.secondaryBackground": "#1e0c31",                                  // azure shades
-
-    // button.foreground: Button foreground color.
-    // button.hoverBackground: Button background color when hovering.
-    // button.secondaryForeground: Secondary button foreground color.
-    // button.secondaryHoverBackground: Secondary button background color when hovering.
-    // checkbox.background: Background color of checkbox widget.
-    // checkbox.foreground: Foreground color of checkbox widget.
-    // checkbox.border: Border color of checkbox widget.
-
-
-    // VERSION CONTROL
-    // ---------------------------------------------------------------------------------
-    
-    // gitDecoration.deletedResourceForeground: Used for file labels and the SCM viewlet.
-    "gitDecoration.deletedResourceForeground": "#EF535090",
-
-    // gitDecoration.modifiedResourceForeground: Used for file labels and the SCM viewlet.
-    "gitDecoration.modifiedResourceForeground": "#a2bffc",
-
-    // gitDecoration.untrackedResourceForeground: Used for file labels and the SCM viewlet.
-    "gitDecoration.untrackedResourceForeground": "#addb67ff",
-
-    // gitDecoration.ignoredResourceForeground: Used for file labels and the SCM viewlet.
-    "gitDecoration.ignoredResourceForeground": "#395a75",
-
-    // gitDecoration.conflictingResourceForeground: Used for file labels and the SCM viewlet.
-    "gitDecoration.conflictingResourceForeground": "#ffeb95cc",
-
-    // gitDecoration.addedResourceForeground: Used for file labels and the SCM viewlet.
-    // gitDecoration.submoduleResourceForeground: Color for submodule resources.
-    // gitDecoration.stageModifiedResourceForeground: Used for file labels and the SCM viewlet.
-    // gitDecoration.stageDeletedResourceForeground: Used for file labels and the SCM viewlet.
-
-
-    // MERGE CONFLICTS
-    // ~~~~~~~~~~~~~~~
-
-    // merge.currentHeaderBackground: Current header background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
-    // merge.currentContentBackground: Current content background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
-    // merge.incomingHeaderBackground: Incoming header background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
-    // merge.incomingContentBackground: Incoming content background in inline merge conflicts. The color must not be opaque so as not to hide underlying decorations.
-    // merge.border: Border color on headers and the splitter in inline merge conflicts.
-    // merge.commonContentBackground: Common ancestor content background in inline merge-conflicts. The color must not be opaque so as not to hide underlying decorations.
-    // merge.commonHeaderBackground: Common ancestor header background in inline merge-conflicts. The color must not be opaque so as not to hide underlying decorations.
-    // editorOverviewRuler.currentContentForeground: Current overview ruler foreground for inline merge conflicts.
-    // editorOverviewRuler.incomingContentForeground: Incoming overview ruler foreground for inline merge conflicts.
-    // editorOverviewRuler.commonContentForeground: Common ancestor overview ruler foreground for inline merge conflicts.
-
-
-    // DIFF EDITOR
-    // ---------------------------------------------------------------------------------
-    
-    // diffEditor.insertedTextBackground: Background color for text that got inserted. The color must not be opaque so as not to hide underlying decorations.
-    // "diffEditor.insertedTextBackground": "#00181655",
-    // "diffEditor.insertedTextBackground": "#001816d0",
-    // "diffEditor.insertedTextBackground": "#132E20",
-    // "diffEditor.insertedTextBackground": "#0f35218f",
-    // "diffEditor.insertedTextBackground": "#0c2c1c71",
-    "diffEditor.insertedTextBackground": "#0c2c2071",
-
-    // diffEditor.insertedTextBorder: Outline color for the text that got inserted.
-    // "diffEditor.insertedTextBorder": "#002724",
-    // "diffEditor.insertedTextBorder": "#079b40",
-
-    // diffEditor.removedTextBackground: Background color for text that got removed. The color must not be opaque so as not to hide underlying decorations.
-    // "diffEditor.removedTextBackground": "#2c080421",
-    // "diffEditor.removedTextBackground": "#360a0552",
-    // "diffEditor.removedTextBackground": "#36050c48",
-    "diffEditor.removedTextBackground": "#36050c3f",
-
-    // diffEditor.removedTextBorder: Outline color for text that got removed.
-    // "diffEditor.removedTextBorder": "#2c0804",
-
-    // diffEditor.border: Border color between the two text editors.
-    "diffEditor.border": "#232530",       // sidebar.border
-
-    // diffEditor.diagonalFill: The diagonal fill is used in side-by-side diff views.
-    "diffEditor.diagonalFill": "#22222275",
-
-
-
-	},
-    // ==============================================================
+    "name": "Dark and Cool",
+    "type": "dark",
+    "colors": {
+        "editorGroupHeader.tabsBackground": "#0a0a0a",
+        "statusBar.background": "#0a0a0a",
+        "tab.activeBackground": "#0a0a0a",
+        "activityBar.background": "#0a0a0a",
+        "activityBar.border": "#0a0a0a",
+        "panel.background": "#0a0a0a",
+        "editorGutter.background": "#0a0a0a",
+        "editorGroup.border": "#0a0a0a",
+        "statusBar.noFolderBackground": "#0a0a0a",
+        "sideBarSectionHeader.background": "#0a0a0a",
+        "editor.background": "#0f0f0f",
+        "debugToolBar.background": "#101316",
+        "list.inactiveSelectionBackground": "#101316",
+        "editorWidget.background": "#101316",
+        "input.background": "#101316",
+        "dropdown.background": "#101316",
+        "dropdown.listBackground": "#101316",
+        "inputOption.activeBackground": "#101316",
+        "sideBar.background": "#101316",
+        "statusBar.debuggingBackground": "#101316",
+        "sideBar.border": "#232530",
+        "diffEditor.border": "#232530",
+        "contrastBorder": "#232530",
+        "input.border": "#232530",
+        "statusBar.noFolderBorder": "#232530",
+        "dropdown.border": "#232530",
+        "foreground": "#AAB1C0",
+        "editor.foreground": "#AAB1C0",
+        "activityBar.activeBorder": "#6D57FFBB",
+        "panelTitle.activeBorder": "#6D57FFBB",
+        "tab.activeBorder": "#6D57FFBB",
+        "editorIndentGuide.activeBackground": "#6D57FFBB",
+        "textBlockQuote.border": "#6D57FFBB",
+        "tree.indentGuidesStroke": "#6D57FFBB",
+        "textLink.foreground": "#80CBC4",
+        "list.highlightForeground": "#80CBC4",
+        "list.inactiveSelectionForeground": "#80CBC4",
+        "badge.background": "#88c0d0",
+        "statusBarItem.remoteBackground": "#88c0d0",
+        "activityBarBadge.background": "#88c0d0",
+        "editorCursor.background": "#000000",
+        "focusBorder": "#008097",
+        "widget.shadow": "#008097",
+        "list.activeSelectionBackground": "#4c5ead58",
+        "list.focusBackground": "#4c5ead58",
+        "list.dropBackground": "#67769640",
+        "statusBarItem.hoverBackground": "#67769640",
+        "sideBar.dropBackground": "#67769640",
+        "textLink.activeForeground": "#008097",
+        "editorLink.activeForeground": "#008097",
+        "activityBarBadge.foreground": "#000000",
+        "textCodeBlock.background": "#242938",
+        "textBlockQuote.background": "#242938",
+        "statusBar.debuggingForeground": "#009688",
+        "tab.inactiveBackground": "#1f2326",
+        "editor.selectionBackground": "#add6ff26",
+        "selection.background": "#88c0d099",
+        "statusBar.border": "#364958",
+        "editorLineNumber.foreground": "#495162",
+        "editorCursor.foreground": "#008097",
+        "editor.lineHighlightBorder": "#000000",
+        "editor.lineHighlightBackground": "#024f5940",
+        "button.background": "#2b313c",
+        "button.secondaryBackground": "#1e0c31",
+        "diffEditor.insertedTextBackground": "#0c2c2071",
+        "diffEditor.removedTextBackground": "#36050c3f",
+        "diffEditor.diagonalFill": "#22222275",
+        "list.hoverBackground": "#1b2432",
+        "editor.findMatchBackground": "#61AFEF4F",
+        "editor.findMatchHighlightBackground": "#000000",
+        "editor.findMatchHighlightBorder": "#61AFEF9F",
+        "editor.wordHighlightBackground": "#61AFEF4F",
+        "editor.wordHighlightBorder": "#61AFEF9F",
+        "editor.wordHighlightStrongBackground": "#61AFEF4F",
+        "editor.wordHighlightStrongBorder": "#61AFEF9F",
+        "gitDecoration.deletedResourceForeground": "#EF535090",
+        "gitDecoration.modifiedResourceForeground": "#a2bffc",
+        "gitDecoration.untrackedResourceForeground": "#addb67ff",
+        "gitDecoration.ignoredResourceForeground": "#395a75",
+        "gitDecoration.conflictingResourceForeground": "#ffeb95cc"
+    },
     "tokenColors": [
-      {
-          "name": "Comment",
-          "scope": "comment",
-          "settings": {
-              // "foreground": "#60778c" // seti
-            //   "foreground": "#AAB1C0"          // 1 dark raincoat
-              // "foreground": "#ffffff"
-              // "foreground": "#969696"          // simple dark, keyword storage
-              "foreground": "#898e9a"  // summer night
-          }
-      },
-      {
-          "name": "Docstring",
-          "scope": "string.quoted.docstring.multi",
-          "settings": {
-              // "foreground": "#7ebea0"
-              "foreground": "#9AC4D7"          // seti
-          }
-      },
-      {
-          "name": "String",
-          "scope": "string",
-          "settings": {
-              // "foreground": "#7ebea0"
-              // "foreground": "#9AC4D7"          // seti
-              // "foreground": "#81A1C1"
-              // "foreground": "#d1eef0"
-              "foreground": "#BDD6DB"
-          }
-      },
-      {
-          "name": "Number",
-          "scope": "constant.numeric",
-          "settings": {
-              "foreground": "#15b8ae"
-          }
-      },
-      {
-          "name": "Method Calls",
-          "scope": "meta.member.access",
-          "settings": {
-            "foreground": "#AAB1C0",                           // vaporwave
-          }
-      },
-      {
-          "name": "Built-in Functions",
-          "scope": "support.function.builtin",
-          "settings": {
-              "foreground": "#AA8888"
-          }
-      },
-      {
-          "name": "Built-in constant",
-          "scope": "constant.language",
-          "settings": {
-              // "foreground": "#019d76"      // seti
-              // "foreground": "#2BC7B9"      // CodePen-Nights
-              // "foreground": "#655A72"
-              // "foreground": "#EE829F"
-              "foreground": "#594B87"
-          }
-      },
-      {
-          "name": "User-defined constant",
-          "scope": [
-              "constant.character",
-              "constant.other"
-          ],
-          "settings": {
-              // "foreground": "#019d76"
-              "foreground": "#52708b"            // azure dark
-          }
-      },
-      {
-          "name": "Variable",
-          "scope": "variable",
-          "settings": {
-              "fontStyle": "",
-              // "foreground": "#019d76"       // seti
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Special Variables",   // like self
-          "scope": "variable.language.special",
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#C0B7F9"
-          }
-      },
-      {
-          "name": "Keyword",
-          "scope": "keyword",
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Storage",
-          "scope": "storage",
-          "settings": {
-              "fontStyle": "",
-              // "foreground": "#019d76"
-              "foreground": "#D4D4D4"  // one dark pro mononoki
-          }
-      },
-      {
-          "name": "Storage type",
-          "scope": "storage.type",
-          "settings": {
-              "fontStyle": "",
-              // "foreground": "#017c9d"  // seti
-              // "foreground": "#D4D4D4"  // one dark pro mononoki
-              "foreground": "#6AB0A3"     // azure dark
-          }
-      },
-      {
-          "name": "Class name",
-          "scope": "entity.name.class",
-          "settings": {
-              "fontStyle": "underline",
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Inherited class",
-          "scope": "entity.other.inherited-class",
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Function name",
-          "scope": "entity.name.function",
-          "settings": {
-              "fontStyle": "",
-                // "foreground": "#88C0D0"       // nord extra dark
-              // "foreground": "#15b8ae"
-              // "foreground": "#88C0D0"            // nord extra dark
-          }
-      },
-      {
-          "name": "Function call",
-          "scope": [
-            "source.python meta.function-call",
-            "source.python meta.function-call.generic"
-          ],
-          "settings": {
-              "fontStyle": "",
-              // "foreground": "#88C0D0"
-          }
-      },
-      {
-          "name": "Function argument",
-          "scope": "variable.parameter",
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#898e9a"  // light gray
-          }
-      },
-      {
-          "name": "Tag name",
-          "scope": "entity.name.tag",
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Tag attribute",
-          "scope": "entity.other.attribute-name",
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Library function",
-          "scope": "support.function",
-          "settings": {
-              "fontStyle": "",
-              // "foreground": "#88C0D0"           // nord extra dark
-              // "foreground": "#019d76"      // seti
-          }
-      },
-      {
-          "name": "Library constant",
-          "scope": "support.constant",
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Library class/type",
-          "scope": [
-              "support.type",
-              "support.class"
-          ],
-          "settings": {
-              "fontStyle": "",
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Library variable",
-          "scope": "support.other.variable",
-          "settings": {
-              "foreground": "#ffffff"
-          }
-      },
-      {
-          "name": "Invalid",
-          "scope": "invalid",
-          "settings": {
-              "foreground": "#cf433e"
-          }
-      },
-      {
-          "name": "Invalid deprecated",
-          "scope": "invalid.deprecated",
-          "settings": {
-              "foreground": "#cf433e"
-          }
-      },
-      {
-          "name": "JSON String",
-          "scope": "meta.structure.dictionary.json string.quoted.double.json",
-          "settings": {
-              "foreground": "#15b8ae"
-          }
-      },
-      {
-          "name": "diff.header",
-          "scope": [
-              "meta.diff",
-              "meta.diff.header"
-          ],
-          "settings": {
-              "foreground": "#60778c"
-          }
-      },
-      {
-          "name": "diff.deleted",
-          "scope": "markup.deleted",
-          "settings": {
-              "foreground": "#e61f44"
-          }
-      },
-      {
-          "name": "diff.inserted",
-          "scope": "markup.inserted",
-          "settings": {
-              "foreground": "#A6E22E"
-          }
-      },
-      {
-          "name": "diff.changed",
-          "scope": "markup.changed",
-          "settings": {
-              "foreground": "#f7b83d"
-          }
-      },
-      {
-          "scope": "constant.numeric.line-number.find-in-files - match",
-          "settings": {
-              "foreground": "#8FBE00A0"
-          }
-      },
-      {
-          "scope": "entity.name.filename.find-in-files",
-          "settings": {
-              "foreground": "#E6DB74"
-          }
-      },
-      {
-          "scope": "keyword.other",
-          "settings": {
-              "foreground": "#8a9daf"
-          }
-      },
-      {
-        // key in key value pairs
-          "scope": [
-              // "meta.indexed-name",
-              // "meta.item-access.arguments"
-          ],
-          "settings": {
-              "foreground": "#C0B7F9"
-          }
-      },
-      {
-          "scope": [
-              "meta.property-value",
-              "support.constant.property-value",
-              "constant.other.color"
-          ],
-          "settings": {
-              "foreground": "#15b8ae"
-          }
-      },
-      {
-          "scope": "meta.structure.dictionary.json string.quoted.double.json",
-          "settings": {
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "scope": "meta.structure.dictionary.value.json string.quoted.double.json",
-          "settings": {
-              "foreground": "#15b8ae"
-          }
-      },
-      {
-          "name": "Function argument",
-          "scope": "meta.property-name support.type.property-name",
-          "settings": {
-              "fontStyle": "italic"
-          }
-      },
-      {
-          "name": "Function argument",
-          "scope": "meta.property-value punctuation.separator.key-value",
-          "settings": {
-              "foreground": "#ffffff"
-          }
-      },
-      {
-          "name": "Function argument",
-          "scope": [
-              "keyword.other.use",
-              "keyword.other.function.use",
-              "keyword.other.namespace",
-              "keyword.other.new",
-              "keyword.other.special-method",
-              "keyword.other.unit",
-              "keyword.other.use-as"
-          ],
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Function argument",
-          "scope": [
-              "meta.use support.class.builtin",
-              "meta.other.inherited-class support.class.builtin"
-          ],
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Function argument",
-          "scope": "variable.other",
-          "settings": {
-              "foreground": "#ffffff"
-          }
-      },
-      {
-          "name": "Coffeescript Function argument",
-          "scope": "variable.parameter.function.coffee",
-          "settings": {
-              "foreground": "#15b8ae",
-              "fontStyle": ""
-          }
-      },
-      {
-          "name": "Markdown Titles",
-          "scope": "entity.name.section.markdown",
-          "settings": {
-              "foreground": "#019d76"
-          }
-      },
-      {
-          "name": "Markdown Title Hash",
-          "scope": "punctuation.definition.heading.markdown",
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Markdown Raw",
-          "scope": "markup.raw.inline.markdown",
-          "settings": {
-              "foreground": "#15b8ae"
-          }
-      },
-      {
-          "name": "Markdown bold stars",
-          "scope": [
-              "punctuation.definition.bold.markdown",
-              "punctuation.definition.italic.markdown"
-          ],
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Markdown link title braces",
-          "scope": [
-              "punctuation.definition.string.begin.markdown",
-              "punctuation.definition.string.end.markdown"
-          ],
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Markdown link braces",
-          "scope": "punctuation.definition.metadata.markdown",
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Markdown link",
-          "scope": [
-              "markup.underline.link.markdown",
-              "markup.underline.link.image.markdown",
-              "meta.image.inline.markdown"
-          ],
-          "settings": {
-              "foreground": "#017c9d",
-              "fontStyle": ""
-          }
-      },
-      {
-          "name": "Markdown bold/italic",
-          "scope": [
-              "markup.bold.markdown",
-              "markup.italic.markdown"
-          ],
-          "settings": {
-              "foreground": "#017c9d"
-          }
-      },
-      {
-          "name": "Markdown bold/italic",
-          "scope": "markup.italic.markdown",
-          "settings": {
-              "fontStyle": "italic"
-          }
-      },
-      {
-          "name": "Markdown bold/italic",
-          "scope": "markup.bold.markdown",
-          "settings": {
-              "fontStyle": "bold"
-          }
-      },
-      {
-          "name": "Markdown pre",
-          "scope": "markup.raw.block.markdown",
-          "settings": {
-              "foreground": "#664e4d"
-          }
-      },
-      {
-          "name": "GitGutter deleted",
-          "scope": "markup.deleted.git_gutter",
-          "settings": {
-              "foreground": "#e61f44"
-          }
-      },
-      {
-          "name": "GitGutter inserted",
-          "scope": "markup.inserted.git_gutter",
-          "settings": {
-              "foreground": "#a7da1e"
-          }
-      },
-      {
-          "name": "GitGutter changed",
-          "scope": "markup.changed.git_gutter",
-          "settings": {
-              "foreground": "#f7b83d"
-          }
-      },
-      {
-          "name": "Template expressions.",
-          "scope": "meta.template.expression",
-          "settings": {
-              "foreground": "#ffffff"
-          }
-      }
-  ]
+        {
+            "name": "Comment",
+            "scope": "comment",
+            "settings": {
+                "foreground": "#898e9a"
+            }
+        },
+        {
+            "name": "Docstring",
+            "scope": "string.quoted.docstring.multi",
+            "settings": {
+                "foreground": "#9AC4D7"
+            }
+        },
+        {
+            "name": "String",
+            "scope": "string",
+            "settings": {
+                "foreground": "#BDD6DB"
+            }
+        },
+        {
+            "name": "Number",
+            "scope": "constant.numeric",
+            "settings": {
+                "foreground": "#15b8ae"
+            }
+        },
+        {
+            "name": "Method Calls",
+            "scope": "meta.member.access",
+            "settings": {
+                "foreground": "#AAB1C0"
+            }
+        },
+        {
+            "name": "Built-in Functions",
+            "scope": "support.function.builtin",
+            "settings": {
+                "foreground": "#AA8888"
+            }
+        },
+        {
+            "name": "Built-in constant",
+            "scope": "constant.language",
+            "settings": {
+                "foreground": "#594B87"
+            }
+        },
+        {
+            "name": "User-defined constant",
+            "scope": [
+                "constant.character",
+                "constant.other"
+            ],
+            "settings": {
+                "foreground": "#52708b"
+            }
+        },
+        {
+            "name": "Variable",
+            "scope": "variable",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Special Variables",
+            "scope": "variable.language.special",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#C0B7F9"
+            }
+        },
+        {
+            "name": "Keyword",
+            "scope": "keyword",
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Storage",
+            "scope": "storage",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#D4D4D4"
+            }
+        },
+        {
+            "name": "Storage type",
+            "scope": "storage.type",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#6AB0A3"
+            }
+        },
+        {
+            "name": "Class name",
+            "scope": "entity.name.class",
+            "settings": {
+                "fontStyle": "underline",
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Inherited class",
+            "scope": "entity.other.inherited-class",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Function name",
+            "scope": "entity.name.function",
+            "settings": {
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Function call",
+            "scope": [
+                "source.python meta.function-call",
+                "source.python meta.function-call.generic"
+            ],
+            "settings": {
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Function argument",
+            "scope": "variable.parameter",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#898e9a"
+            }
+        },
+        {
+            "name": "Tag name",
+            "scope": "entity.name.tag",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Tag attribute",
+            "scope": "entity.other.attribute-name",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Library function",
+            "scope": "support.function",
+            "settings": {
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Library constant",
+            "scope": "support.constant",
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Library class/type",
+            "scope": [
+                "support.type",
+                "support.class"
+            ],
+            "settings": {
+                "fontStyle": "",
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Library variable",
+            "scope": "support.other.variable",
+            "settings": {
+                "foreground": "#ffffff"
+            }
+        },
+        {
+            "name": "Invalid",
+            "scope": "invalid",
+            "settings": {
+                "foreground": "#cf433e"
+            }
+        },
+        {
+            "name": "Invalid deprecated",
+            "scope": "invalid.deprecated",
+            "settings": {
+                "foreground": "#cf433e"
+            }
+        },
+        {
+            "name": "JSON String",
+            "scope": "meta.structure.dictionary.json string.quoted.double.json",
+            "settings": {
+                "foreground": "#15b8ae"
+            }
+        },
+        {
+            "name": "diff.header",
+            "scope": [
+                "meta.diff",
+                "meta.diff.header"
+            ],
+            "settings": {
+                "foreground": "#60778c"
+            }
+        },
+        {
+            "name": "diff.deleted",
+            "scope": "markup.deleted",
+            "settings": {
+                "foreground": "#e61f44"
+            }
+        },
+        {
+            "name": "diff.inserted",
+            "scope": "markup.inserted",
+            "settings": {
+                "foreground": "#A6E22E"
+            }
+        },
+        {
+            "name": "diff.changed",
+            "scope": "markup.changed",
+            "settings": {
+                "foreground": "#f7b83d"
+            }
+        },
+        {
+            "scope": "constant.numeric.line-number.find-in-files - match",
+            "settings": {
+                "foreground": "#8FBE00A0"
+            }
+        },
+        {
+            "scope": "entity.name.filename.find-in-files",
+            "settings": {
+                "foreground": "#E6DB74"
+            }
+        },
+        {
+            "scope": "keyword.other",
+            "settings": {
+                "foreground": "#8a9daf"
+            }
+        },
+        {
+            "scope": [],
+            "settings": {
+                "foreground": "#C0B7F9"
+            }
+        },
+        {
+            "scope": [
+                "meta.property-value",
+                "support.constant.property-value",
+                "constant.other.color"
+            ],
+            "settings": {
+                "foreground": "#15b8ae"
+            }
+        },
+        {
+            "scope": "meta.structure.dictionary.json string.quoted.double.json",
+            "settings": {
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "scope": "meta.structure.dictionary.value.json string.quoted.double.json",
+            "settings": {
+                "foreground": "#15b8ae"
+            }
+        },
+        {
+            "name": "Function argument",
+            "scope": "meta.property-name support.type.property-name",
+            "settings": {
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "name": "Function argument",
+            "scope": "meta.property-value punctuation.separator.key-value",
+            "settings": {
+                "foreground": "#ffffff"
+            }
+        },
+        {
+            "name": "Function argument",
+            "scope": [
+                "keyword.other.use",
+                "keyword.other.function.use",
+                "keyword.other.namespace",
+                "keyword.other.new",
+                "keyword.other.special-method",
+                "keyword.other.unit",
+                "keyword.other.use-as"
+            ],
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Function argument",
+            "scope": [
+                "meta.use support.class.builtin",
+                "meta.other.inherited-class support.class.builtin"
+            ],
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Function argument",
+            "scope": "variable.other",
+            "settings": {
+                "foreground": "#ffffff"
+            }
+        },
+        {
+            "name": "Coffeescript Function argument",
+            "scope": "variable.parameter.function.coffee",
+            "settings": {
+                "foreground": "#15b8ae",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Markdown Titles",
+            "scope": "entity.name.section.markdown",
+            "settings": {
+                "foreground": "#019d76"
+            }
+        },
+        {
+            "name": "Markdown Title Hash",
+            "scope": "punctuation.definition.heading.markdown",
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Markdown Raw",
+            "scope": "markup.raw.inline.markdown",
+            "settings": {
+                "foreground": "#15b8ae"
+            }
+        },
+        {
+            "name": "Markdown bold stars",
+            "scope": [
+                "punctuation.definition.bold.markdown",
+                "punctuation.definition.italic.markdown"
+            ],
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Markdown link title braces",
+            "scope": [
+                "punctuation.definition.string.begin.markdown",
+                "punctuation.definition.string.end.markdown"
+            ],
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Markdown link braces",
+            "scope": "punctuation.definition.metadata.markdown",
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Markdown link",
+            "scope": [
+                "markup.underline.link.markdown",
+                "markup.underline.link.image.markdown",
+                "meta.image.inline.markdown"
+            ],
+            "settings": {
+                "foreground": "#017c9d",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Markdown bold/italic",
+            "scope": [
+                "markup.bold.markdown",
+                "markup.italic.markdown"
+            ],
+            "settings": {
+                "foreground": "#017c9d"
+            }
+        },
+        {
+            "name": "Markdown bold/italic",
+            "scope": "markup.italic.markdown",
+            "settings": {
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "name": "Markdown bold/italic",
+            "scope": "markup.bold.markdown",
+            "settings": {
+                "fontStyle": "bold"
+            }
+        },
+        {
+            "name": "Markdown pre",
+            "scope": "markup.raw.block.markdown",
+            "settings": {
+                "foreground": "#664e4d"
+            }
+        },
+        {
+            "name": "GitGutter deleted",
+            "scope": "markup.deleted.git_gutter",
+            "settings": {
+                "foreground": "#e61f44"
+            }
+        },
+        {
+            "name": "GitGutter inserted",
+            "scope": "markup.inserted.git_gutter",
+            "settings": {
+                "foreground": "#a7da1e"
+            }
+        },
+        {
+            "name": "GitGutter changed",
+            "scope": "markup.changed.git_gutter",
+            "settings": {
+                "foreground": "#f7b83d"
+            }
+        },
+        {
+            "name": "Template expressions.",
+            "scope": "meta.template.expression",
+            "settings": {
+                "foreground": "#ffffff"
+            }
+        }
+    ]
 }
