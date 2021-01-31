@@ -1,14 +1,11 @@
 Dark and Cool
 =============
 
-> A personal dark VS Code theme with cool colors.
+> A dark VS Code theme with cool colors for my personal use.
 
 
-Build and Install
------------------
+[![Code Screenshots](screenshots/code/code-samples.png)](docs/screenshots.md)
 
-```bash
-command -v vsce > /dev/null || npm install vsce
-vsce package
-code --install-extension dark-cool-color-theme-*.vsix
-```
+[![Interface Screenshots](screenshots/interface/interface.png)](docs/screenshots.md)
+
+[More screenshots](docs/screenshots.md)

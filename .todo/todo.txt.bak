@@ -1,1 +1,11 @@
 2021-01-22 style command palette
+2021-01-22 make color variables and build script
+2021-01-30 add colors to readme
+2021-01-30 generate theme from colors.json
+2021-01-30 add features to readme
+2021-01-30 add TOC to readme
+2021-01-30 publish to marketplace
+2021-01-30 add marketplace link to readme
+2021-01-30 add known issues to readme (lack of diff contrast)
+2021-01-30 integrate token colors from Jayson's theme suggestion
+2021-01-30 .todo
