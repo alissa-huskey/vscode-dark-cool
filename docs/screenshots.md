@@ -24,44 +24,44 @@ Interface
 
 ### Sidebar
 
-![Sidebar Screenshot](../screenshots/interface/sidebar.png)
+![Sidebar Screenshot](../screenshots/interface-sidebar.png)
 
 ### Command Palette
 
-![Command Palette Screenshot](../screenshots/interface/command-palette.png)
+![Command Palette Screenshot](../screenshots/interface-command-palette.png)
 
 
 ### Inline Diff
 
-![Inline Diff Screenshot](../screenshots/interface/inline-diff.png)
+![Inline Diff Screenshot](../screenshots/interface-inline-diff.png)
 
 ### Debugger
 
-![Debugger Screenshot](../screenshots/interface/debugger.png)
+![Debugger Screenshot](../screenshots/interface-debugger.png)
 
 Languages
 ---------
 
 ### Python
 
-![python](../screenshots/code/python.png)
+![python](../screenshots/code-python.png)
 
 ### JSON
 
-![json](../screenshots/code/json.png)
+![json](../screenshots/code-json.png)
 
 ### Ruby
 
-![ruby](../screenshots/code/ruby.png)
+![ruby](../screenshots/code-ruby.png)
 
 ### Markdown
 
-![markdown](../screenshots/code/markdown.png)
+![markdown](../screenshots/code-markdown.png)
 
 ### LESS
 
-![less](../screenshots/code/less.png)
+![less](../screenshots/code-less.png)
 
 ### React
 
-![react](../screenshots/code/react.png)
+![react](../screenshots/code-react.png)

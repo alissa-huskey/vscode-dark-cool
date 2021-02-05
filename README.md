@@ -26,9 +26,9 @@ Features
 Screenshots
 -----------
 
-[![Code Screenshots](screenshots/code/code-samples.png)](docs/screenshots.md)
+[![Code Screenshots](screenshots/code-code-samples.png)](docs/screenshots.md)
 
-[![Interface Screenshots](screenshots/interface/interface.png)](docs/screenshots.md)
+[![Interface Screenshots](screenshots/interface-interface.png)](docs/screenshots.md)
 
 [More screenshots](docs/screenshots.md)
 
