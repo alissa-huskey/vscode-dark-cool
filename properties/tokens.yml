@@ -1,0 +1,229 @@
+colors:
+- &dark-gray      [ dark-gray     , 898e9a   ]
+- &muted-blue     [ muted-blue    , 9AC4D7   ]
+- &gray-cyan      [ gray-cyan     , BDD6DB   ]
+- &turquoise      [ turquoise     , 15b8ae   ]
+- &light-slate    [ light-slate   , AAB1C0   ]
+- &rose           [ rose          , AA8888   ]
+- &eggplant       [ eggplant      , 594B87   ]
+- &slate          [ slate         , 52708b   ]
+- &green          [ green         , 019d76   ]
+- &periwinkle     [ periwinkle    , C0B7F9   ]
+- &cerulean       [ cerulean      , 017c9d   ]
+- &light-gray     [ light-gray    , D4D4D4   ]
+- &muted-cyan     [ muted-cyan    , 6AB0A3   ]
+- &jungle-green   [ jungle-green  , 019d76   ]
+- &white          [ white         , ffffff   ]
+- &vermilion      [ vermilion     , cf433e   ]
+- &dark-slate     [ dark-slate    , 60778c   ]
+- &crimson        [ crimson       , DC143C   ]
+- &lime           [ lime          , A6E22E   ]
+- &orange         [ orange        , FF9966   ]
+- &grass          [ grass         , 8FBE00A0 ]
+- &yellow         [ yellow        , E6DB74   ]
+- &cadet-gray     [ cadet-gray    , 8a9daf   ]
+- &brick          [ brick         , 664e4d   ]
+- &dark-gray      [ dark-gray     , 898E9A   ]
+- &muted-blue     [ muted-blue    , 9AC4D7   ]
+- &gray-cyan      [ gray-cyan     , BDD6DB   ]
+- &turquoise      [ turquoise     , 15B8AE   ]
+- &light-slate    [ light-slate   , AAB1C0   ]
+- &rose           [ rose          , AA8888   ]
+- &eggplant       [ eggplant      , 594B87   ]
+- &slate          [ slate         , 52708B   ]
+- &green          [ green         , 019D76   ]
+- &periwinkle     [ periwinkle    , C0B7F9   ]
+- &cerulean       [ cerulean      , 017C9D   ]
+- &light-gray     [ light-gray    , D4D4D4   ]
+- &muted-cyan     [ muted-cyan    , 6AB0A3   ]
+- &white          [ white         , FFFFFF   ]
+- &vermilion      [ vermilion     , CF433E   ]
+- &dark-slate     [ dark-slate    , 60778C   ]
+- &crimson        [ crimson       , DC143C   ]
+- &lime           [ lime          , A6E22E   ]
+- &orange         [ orange        , FF9966   ]
+- &grass          [ grass         , 8FBE00A0 ]
+- &yellow         [ yellow        , E6DB74   ]
+- &cadet-gray     [ cadet-gray    , 8A9DAF   ]
+- &brick          [ brick         , 664E4D   ]
+- &color-1        [ color-1       , E61F44   ]
+- &color-2        [ color-2       , F7B83D   ]
+- &color-3        [ color-3       , A7DA1E   ]
+
+settings      :
+  foreground  : *periwinkle
+
+tokens                                                              :
+  User-defined constant                                             :
+    foreground                                                      : *slate
+    scope                                                           :
+                                                                      - constant.character
+                                                                      - constant.other
+
+  Variable                                                          :
+    foreground                                                      : *green
+    scope                                                           : ['variable']
+
+  Special Variables                                                 :
+    foreground                                                      : *periwinkle
+    scope                                                           : ['variable.language.special']
+
+  Storage                                                           :
+    foreground                                                      : *light-gray
+    scope                                                           : ['storage']
+
+  Storage type                                                      :
+    foreground                                                      : *muted-cyan
+    scope                                                           : ['storage.type']
+
+  Class name                                                        :
+    fontStyle                                                       : underline
+    foreground                                                      : *green
+    scope                                                           : ['entity.name.class']
+
+  Inherited class                                                   :
+    foreground                                                      : *green
+    scope                                                           : ['entity.other.inherited-class']
+
+  Function name                                                     :
+    scope                                                           : ['entity.name.function']
+
+  Function call                                                     :
+    scope                                                           :
+                                                                      - source.python meta.function-call
+                                                                      - source.python meta.function-call.generic
+
+  Function argument                                                 :
+    foreground                                                      : *dark-gray
+    scope                                                           : ['variable.parameter']
+
+  Tag name                                                          :
+    foreground                                                      : *cerulean
+    scope                                                           : ['entity.name.tag']
+
+  Tag attribute                                                     :
+    foreground                                                      : *green
+    scope                                                           : ['entity.other.attribute-name']
+
+  Library function                                                  :
+    scope                                                           : ['support.function']
+
+  Library constant                                                  :
+    foreground                                                      : *green
+    scope                                                           : ['support.constant']
+
+  Library class/type                                                :
+    foreground                                                      : *green
+    scope                                                           :
+                                                                      - support.type
+                                                                      - support.class
+
+  JSON String                                                       :
+    foreground                                                      : *turquoise
+    scope                                                           : ['meta.structure.dictionary.json string.quoted.double.json']
+
+  diff.header                                                       :
+    foreground                                                      : *dark-slate
+    scope                                                           :
+                                                                      - meta.diff
+                                                                      - meta.diff.header
+
+  token-1                                                           :
+    foreground                                                      : *turquoise
+    scope                                                           :
+                                                                      - meta.property-value
+                                                                      - support.constant.property-value
+                                                                      - constant.other.color
+
+  Function argument-1357                                            :
+    fontStyle                                                       : italic
+    scope                                                           : ['meta.property-name support.type.property-name']
+
+  Function argument-4634                                            :
+    foreground                                                      : *white
+    scope                                                           : ['meta.property-value punctuation.separator.key-value']
+
+  Function argument-5448                                            :
+    foreground                                                      : *cerulean
+    scope                                                           :
+                                                                      - keyword.other.use
+                                                                      - keyword.other.function.use
+                                                                      - keyword.other.namespace
+                                                                      - keyword.other.new
+                                                                      - keyword.other.special-method
+                                                                      - keyword.other.unit
+                                                                      - keyword.other.use-as
+
+  Function argument-6892                                            :
+    foreground                                                      : *cerulean
+    scope                                                           :
+                                                                      - meta.use support.class.builtin
+                                                                      - meta.other.inherited-class support.class.builtin
+
+  Coffeescript Function argument                                    :
+    foreground                                                      : *turquoise
+    scope                                                           : ['variable.parameter.function.coffee']
+
+  Markdown bold stars                                               :
+    foreground                                                      : *cerulean
+    scope                                                           :
+                                                                      - punctuation.definition.bold.markdown
+                                                                      - punctuation.definition.italic.markdown
+
+  Markdown link title braces                                        :
+    foreground                                                      : *cerulean
+    scope                                                           :
+                                                                      - punctuation.definition.string.begin.markdown
+                                                                      - punctuation.definition.string.end.markdown
+
+  Markdown link                                                     :
+    foreground                                                      : *cerulean
+    scope                                                           :
+                                                                      - markup.underline.link.markdown
+                                                                      - markup.underline.link.image.markdown
+                                                                      - meta.image.inline.markdown
+
+  Markdown bold/italic                                              :
+    foreground                                                      : *cerulean
+    scope                                                           :
+                                                                      - markup.bold.markdown
+                                                                      - markup.italic.markdown
+
+  Markdown bold/italic-2135                                         :
+    fontStyle                                                       : italic
+    scope                                                           : ['markup.italic.markdown']
+
+  Markdown bold/italic-3789                                         :
+    fontStyle                                                       : bold
+    scope                                                           : ['markup.bold.markdown']
+
+  comment                                                           : *dark-gray
+  string.quoted.docstring.multi                                     : *muted-blue
+  string                                                            : *gray-cyan
+  constant.numeric                                                  : *turquoise
+  meta.member.access                                                : *light-slate
+  support.function.builtin                                          : *rose
+  constant.language                                                 : *eggplant
+  keyword                                                           : *cerulean
+  support.other.variable                                            : *white
+  invalid                                                           : *vermilion
+  invalid.deprecated                                                : *vermilion
+  markup.deleted                                                    : *color-1
+  markup.inserted                                                   : *lime
+  markup.changed                                                    : *color-2
+  constant.numeric.line-number.find-in-files - match                : *grass
+  entity.name.filename.find-in-files                                : *yellow
+  keyword.other                                                     : *cadet-gray
+  meta.structure.dictionary.json string.quoted.double.json          : *green
+  meta.structure.dictionary.value.json string.quoted.double.json    : *turquoise
+  variable.other                                                    : *white
+  entity.name.section.markdown                                      : *green
+  punctuation.definition.heading.markdown                           : *cerulean
+  markup.raw.inline.markdown                                        : *turquoise
+  punctuation.definition.metadata.markdown                          : *cerulean
+  markup.raw.block.markdown                                         : *brick
+  markup.deleted.git_gutter                                         : *color-1
+  markup.inserted.git_gutter                                        : *color-3
+  markup.changed.git_gutter                                         : *color-2
+  meta.template.expression                                          : *white
+

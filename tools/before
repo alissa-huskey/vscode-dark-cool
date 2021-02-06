@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#
-# script to disable extensions before taking demo screenshots
-
-for ext in $(<tools/extensions); do
-  code -r --disable-extension "${ext}" && echo "${ext}"
-done

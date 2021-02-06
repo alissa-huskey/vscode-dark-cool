@@ -86,7 +86,6 @@
 				"activityBar.activeBorder",
 				"panelTitle.activeBorder",
 				"tab.activeBorder",
-				// "tab.activeBorderTop",
 				"editorIndentGuide.activeBackground",
 				"textBlockQuote.border",
 				"tree.indentGuidesStroke"
@@ -138,6 +137,61 @@
 				"focusBorder",
 				"widget.shadow"
 			]
+		},
+		{
+			"element": "SCM Untracked Status (FG)",
+			"hex"
+			"color-desc": "maroon",
+			"desc": "untracked files",
+			"examples": [ "SCM changes, status character" ],
+			"theme-colors": [
+				"gitDecoration.deletedResourceForeground"
+			],
+			"readme": false
+		},
+		{
+			"element": "SCM Changed Status (FG)",
+			"hex": "",
+			"color-desc": "",
+			"desc": "",
+			"examples": [ "SCM changes, status character" ],
+			"theme-colors": [
+				""
+			],
+			"readme": false
+		},
+		{
+			"element": "SCM Ignored Status (FG)",
+			"hex": "",
+			"color-desc": "",
+			"desc": "",
+			"examples": [ "SCM changes, status character" ],
+			"theme-colors": [
+				""
+			],
+			"readme": false
+		},
+		{
+			"element": "SCM Added Status (FG)",
+			"hex": "",
+			"color-desc": "",
+			"desc": "",
+			"examples": [ "SCM changes, status character" ],
+			"theme-colors": [
+				""
+			],
+			"readme": false
+		},
+		{
+			"element": "SCM Deleted Status (FG)",
+			"hex": "ae1600",
+			"color-desc": "maroon",
+			"desc": "deleted files",
+			"examples": [ "SCM changes, status character" ],
+			"theme-colors": [
+				"gitDecoration.deletedResourceForeground"
+			],
+			"readme": false
 		},
 		{
 			"element": "Item BG (Selection)",
@@ -205,7 +259,7 @@
 
 		"editor.selectionBackground": "add6ff26", // TODO -- join?
 		"selection.background": "88c0d099",
-		"statusBar.border": "364958",  // TODO: should be area border
+		// "statusBar.border": "364958",  // TODO: should be area border
 
 		"editorLineNumber.foreground": "495162", // TODO: join with other active text? (tab filename, near white)
 
@@ -235,5 +289,21 @@
 		"gitDecoration.untrackedResourceForeground": "addb67ff",
 		"gitDecoration.ignoredResourceForeground": "395a75",
 		"gitDecoration.conflictingResourceForeground": "ffeb95cc"
+
+
+		// gitDecoration.addedResourceForeground
+		// gitDecoration.modifiedResourceForeground
+		// gitDecoration.deletedResourceForeground
+
+		// gitDecoration.untrackedResourceForeground
+
+		// gitDecoration.stageModifiedResourceForeground
+		// gitDecoration.stageDeletedResourceForeground
+
+		// gitDecoration.ignoredResourceForeground
+
+		// gitDecoration.conflictingResourceForeground
+		// gitDecoration.submoduleResourceForeground
+
 	}
 }

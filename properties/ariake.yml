@@ -1,0 +1,283 @@
+colors:
+- &ghost-ivory    [ ghost-ivory   , F8F8F0 ]
+- &independence   [ independence  , 555C77 ]
+- &blue-violet    [ blue-violet   , A571F4 ]
+- &jordy-blue     [ jordy-blue    , 85b1e0 ]
+- &blue-white     [ blue-white    , F5FAFF ]
+- &plum           [ plum          , dda2f6 ]
+- &thistle        [ thistle       , D8BFD8 ]
+- &baby-blue      [ baby-blue     , 93ddfb ]
+- &sky-blue       [ sky-blue      , 9aefea ]
+- &mist           [ mist          , b9bed5 ]
+- &iris           [ iris          , 7e7edd ]
+- &slate-purple   [ slate-purple  , 7D839B ]
+- &indian-red     [ indian-red    , E05252 ]
+- &white          [ white         , FFFFFF ]
+- &washed-black   [ washed-black  , 1F212A ]
+- &bleu           [ bleu          , 4D8ACB ]
+- &crypt          [ crypt         , 373B41 ]
+- &brown          [ brown         , 523D14 ]
+- &butterscotch   [ butterscotch  , E0C285 ]
+- &shuriken       [ shuriken      , 313343 ]
+- &infinity       [ infinity      , 222530 ]
+- &eclipse        [ eclipse       , 2D303A ]
+- &ghost-ivory    [ ghost-ivory   , F8F8F0 ]
+- &independence   [ independence  , 555C77 ]
+- &blue-violet    [ blue-violet   , A571F4 ]
+- &jordy-blue     [ jordy-blue    , 85B1E0 ]
+- &blue-white     [ blue-white    , F5FAFF ]
+- &plum           [ plum          , DDA2F6 ]
+- &thistle        [ thistle       , D8BFD8 ]
+- &baby-blue      [ baby-blue     , 93DDFB ]
+- &sky-blue       [ sky-blue      , 9AEFEA ]
+- &mist           [ mist          , B9BED5 ]
+- &iris           [ iris          , 7E7EDD ]
+- &slate-purple   [ slate-purple  , 7D839B ]
+- &indian-red     [ indian-red    , E05252 ]
+- &white          [ white         , FFFFFF ]
+- &washed-black   [ washed-black  , 1F212A ]
+- &bleu           [ bleu          , 4D8ACB ]
+- &crypt          [ crypt         , 373B41 ]
+- &brown          [ brown         , 523D14 ]
+- &butterscotch   [ butterscotch  , E0C285 ]
+- &shuriken       [ shuriken      , 313343 ]
+- &infinity       [ infinity      , 222530 ]
+- &eclipse        [ eclipse       , 2D303A ]
+
+settings         :
+  selection      : *shuriken
+  lineHighlight  : *infinity
+  foreground     : *mist
+  invisibles     : *eclipse
+  caret          : *ghost-ivory
+  background     : *washed-black
+
+tokens                                 :
+  'Embedded Ruby: Regexp'              :
+    foreground                         : *blue-violet
+    scope                              : ['string.regexp source.ruby.embedded']
+
+  Punctuation stuff                    :
+    foreground                         : *mist
+    scope                              :
+                                         - punctuation.definition.method-parameters
+                                         - punctuation.definition.function-parameters
+                                         - punctuation.definition.parameters
+                                         - punctuation.definition.separator
+                                         - punctuation.definition.seperator
+                                         - punctuation.definition.array
+
+  Punctuation stuff 2                  :
+    foreground                         : *blue-white
+    scope                              :
+                                         - punctuation.definition.heading
+                                         - punctuation.definition.identity
+
+  Bold                                 :
+    foreground                         : *blue-violet
+    fontStyle                          : bold
+    scope                              : ['punctuation.definition.bold']
+
+  Italic                               :
+    fontStyle                          : italic
+    foreground                         : *iris
+    scope                              : ['punctuation.definition.italic']
+
+  Class Sections                       :
+    foreground                         : *mist
+    scope                              :
+                                         - punctuation.section.method
+                                         - punctuation.section.class
+                                         - punctuation.section.inner-class
+
+  Class Name                           :
+    foreground                         : *blue-violet
+    scope                              :
+                                         - entity.name.class
+                                         - entity.name.type.class
+
+  'Meta: Method'                       :
+    foreground                         : *mist
+    scope                              :
+                                         - meta.method-call
+                                         - meta.method
+
+  'Meta: Separator'                    :
+    foreground                         : *mist
+    background                         : *crypt
+    scope                              : ['meta.separator']
+
+  Underline                            :
+    fontStyle                          : underline
+    scope                              : ['underline']
+
+  'Invalid: Deprecated'                :
+    foreground                         : *brown
+    background                         : *butterscotch
+    scope                              : ['invalid.deprecated']
+
+  'Invalid: Illegal'                   :
+    foreground                         : *white
+    background                         : *indian-red
+    scope                              : ['invalid.illegal']
+
+  'Markup: Bold'                       :
+    foreground                         : *plum
+    fontStyle                          : bold
+    scope                              : ['markup.bold']
+
+  'Markup: Italic'                     :
+    fontStyle                          : italic
+    foreground                         : *iris
+    scope                              : ['markup.italic']
+
+  'Markup: Heading Punctuation'        :
+    foreground                         : *blue-white
+    scope                              : ['markup.heading punctuation.definition.heading']
+
+  'C#: Operator'                       :
+    foreground                         : *iris
+    scope                              : ['source.cs keyword.operator']
+
+  'CSS: Property Name, Value'          :
+    foreground                         : *slate-purple
+    scope                              :
+                                         - source.css property-name
+                                         - source.css property-value
+
+  'CSS: Support Property Name, Value'  :
+    foreground                         : *mist
+    scope                              :
+                                         - source.css property-name.support
+                                         - source.css property-value.support
+
+  'GFM: Link'                          :
+    foreground                         : *blue-white
+    scope                              : ['source.gfm link entity']
+
+  'Go: String'                         :
+    foreground                         : *iris
+    scope                              : ['source.go storage.type.string']
+
+  'INI: Keyword'                       :
+    foreground                         : *jordy-blue
+    scope                              : ['source.ini keyword.other.definition.ini']
+
+  'Java: Import'                       :
+    foreground                         : *blue-violet
+    scope                              : ['source.java storage.modifier.import']
+
+  'Java: Type'                         :
+    foreground                         : *blue-violet
+    scope                              : ['source.java storage.type']
+
+  'Java: instanceof'                   :
+    foreground                         : *iris
+    scope                              : ['source.java keyword.operator.instanceof']
+
+  'Java Properties: Key Pair'          :
+    foreground                         : *jordy-blue
+    scope                              : ['source.java-properties meta.key-pair']
+
+  'JS: Operator'                       :
+    foreground                         : *baby-blue
+    scope                              : ['source.js keyword.operator']
+
+  'JS: Operator Keywords'              :
+    foreground                         : *iris
+    scope                              :
+                                         - source.js keyword.operator.js
+                                         - source.js keyword.operator.delete
+                                         - source.js keyword.operator.in
+                                         - source.js keyword.operator.of
+                                         - source.js keyword.operator.instanceof
+                                         - source.js keyword.operator.new
+                                         - source.js keyword.operator.typeof
+                                         - source.js keyword.operator.void
+
+  'Ruby: Symbol Punctuation'           :
+    foreground                         : *baby-blue
+    scope                              : ['source.ruby constant.other.symbol punctuation']
+
+  'Python: Logic Operator'             :
+    foreground                         : *iris
+    scope                              : ['source.python keyword.operator.logical.python']
+
+  'Python: Parameter'                  :
+    foreground                         : *plum
+    scope                              : ['source.python variable.parameter']
+
+  'Java Properties: Punctiation'       :
+    foreground                         : *mist
+    scope                              : ['source.java-properties meta.key-pair punctuation']
+
+  'JSON: Keys'                         :
+    foreground                         : *jordy-blue
+    scope                              :
+                                         - source.json meta.structure.dictionary.json string.quoted.json
+                                         - source.json meta.structure.dictionary.json string.quoted.json punctuation.string
+
+  'JSON: Value'                        :
+    foreground                         : *sky-blue
+    scope                              :
+                                         - source.json meta.structure.dictionary.json value.json string.quoted.json
+                                         - source.json meta.structure.array.json value.json string.quoted.json
+                                         - source.json meta.structure.dictionary.json value.json string.quoted.json punctuation
+                                         - source.json meta.structure.array.json value.json string.quoted.json punctuation
+
+  'JSON: Constant'                     :
+    foreground                         : *baby-blue
+    scope                              :
+                                         - source.json meta.structure.dictionary.json constant.language.json
+                                         - source.json meta.structure.array.json constant.language.json
+
+  comment                              : *independence
+  entity.name.type                     : *blue-violet
+  entity.other.inherited-class         : *sky-blue
+  keyword                              : *iris
+  keyword.control                      : *iris
+  keyword.operator                     : *mist
+  keyword.other.special-method         : *blue-white
+  keyword.other.unit                   : *plum
+  storage                              : *iris
+  storage.type.annotation              : *iris
+  storage.type.primitive               : *iris
+  storage.modifier.package             : *mist
+  storage.modifier.import              : *mist
+  constant                             : *plum
+  constant.variable                    : *plum
+  constant.character.escape            : *baby-blue
+  constant.numeric                     : *plum
+  constant.other.color                 : *baby-blue
+  constant.other.symbol                : *baby-blue
+  variable                             : *jordy-blue
+  variable.interpolation               : *bleu
+  variable.parameter                   : *mist
+  string                               : *sky-blue
+  string.regexp                        : *baby-blue
+  punctuation.definition.comment       : *independence
+  punctuation.section.embedded         : *bleu
+  support.class                        : *blue-violet
+  support.type                         : *baby-blue
+  support.function                     : *baby-blue
+  support.function.any-method          : *blue-white
+  entity.name.function                 : *blue-white
+  entity.name.section                  : *blue-white
+  entity.name.tag                      : *jordy-blue
+  entity.other.attribute-name          : *plum
+  entity.other.attribute-name.id       : *blue-white
+  meta.class.body                      : *mist
+  meta.definition.variable             : *jordy-blue
+  meta.link                            : *plum
+  meta.require                         : *blue-white
+  meta.selector                        : *iris
+  meta.tag                             : *mist
+  none                                 : *mist
+  markup.changed                       : *iris
+  markup.deleted                       : *jordy-blue
+  markup.heading                       : *jordy-blue
+  markup.link                          : *iris
+  markup.inserted                      : *sky-blue
+  markup.quote                         : *plum
+  markup.raw                           : *sky-blue
+

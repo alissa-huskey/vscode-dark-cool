@@ -1,0 +1,306 @@
+#!/usr/bin/env python
+
+import yaml
+import json
+import sys
+import random
+from os import _exit
+from pathlib import Path
+from pprint import pprint
+
+import click
+
+DATA_DIR = Path(__file__).parent.parent.joinpath("properties")
+# FROM_FILE = DATA_DIR.joinpath("ariake-dark-color-theme.json")
+# TO_FILE = DATA_DIR.joinpath("ariake.yml")
+ERRORS = []
+MARGIN = 2
+
+    
+class Colors():
+    UNNAMED_COLORS = 0
+    
+    def __init__(self, colors=[]):
+        self.by_hex = {}
+        for row in colors:
+            name, color = row
+            self.add(color, name)
+
+    def name(self, text):
+        name = self.by_hex.get(self.hex(text))
+        return name
+
+    def ref(self, text):
+        return f"*{self.name(text)}"
+    
+    def hex(self, text):
+        return str(text).upper().lstrip("#")
+        
+    def add(self, color, name=None):
+        color = self.hex(color)
+        if color in self.by_hex:
+            return None, None
+
+        if not name:
+            name = self.name(color)
+        if not name:
+            self.UNNAMED_COLORS += 1
+            name = f"color-{self.UNNAMED_COLORS}"
+        self.by_hex[color] = name
+        return name, color
+    
+    
+class JSON():
+    def __init__(self, filepath, yml):
+        self.data = json.load(filepath)
+        self.filepath = filepath
+        self.yml = yml
+
+    def parse(self):
+        if isinstance(self.data, list):
+            tokens = self.data
+        else:
+            tokens = self.data.get("tokenColors", [])
+        for t in tokens:
+            token = Token(t, self)
+
+            # settings
+            if not token.name and not token.scope:
+                for scope, color in token.settings.items():
+                    self.yml.add_color(color)
+                    self.yml.data["settings"][scope] = self.yml.colors.ref(color)
+                continue
+                
+            # scope -> foreground
+            collection = "tokens-simple" if token.is_simple() else "tokens"
+            key = token.key
+            if key in self.yml.data[collection]:
+                key = f"{key}-{random.randint(1000, 9999)}"
+
+            self.yml.data[collection][key] = token.to_json()
+
+        if ERRORS:
+            exit(1)
+            
+
+class YAML():
+    STRUCTURE = {
+        "colors": [],
+        "settings": {},
+        "tokens": {},
+        "tokens-simple": {}
+    }
+
+    def __init__(self, data={}):
+        self.lines = []
+        self.data = data
+        self.colors = Colors(self.data["colors"])
+
+    @property
+    def data(self):
+        return self._data
+        
+    @data.setter
+    def data(self, value):
+        self._data = value
+        for key, val in self.STRUCTURE.items():
+            if not key in self._data:
+                self.data[key] = val
+        
+    def read(self, filepath, keys=[]):
+        """."""
+        if not filepath:
+            return
+        
+        try:
+            data = yaml.load(filepath, Loader=yaml.FullLoader)
+        except (yaml.loader.ParserError, yaml.scanner.ScannerError) as e:
+            ctx = e.context_mark or e.problem_mark
+            err(f"{ctx.name} -- {e.problem} @ {ctx.line}:{ctx.column}")
+        
+        if ERRORS:
+            exit(1)
+        
+        if keys:
+            self.data = {}
+            for key in keys:
+                self.data[key] = data[key]
+        else:
+            self.data = data
+
+        for row in self.data.get("colors", []):
+            name, color = row
+            self.add_color(color, name)
+
+    def add_color(self, color, name=None):
+        """."""
+        name, color = self.colors.add(color, name)
+        if name:
+            self.data["colors"].append([name, color])
+        
+    def dump(self):
+        colors = self.data.get("colors", [])
+        if colors:
+            width = colwidth(colors)
+            self.lines.append("colors:")
+            for name, hex_code in colors:
+                self.lines.append(f"- &{name:<{width}} [ {name:<{width}}, {hex_code:<8} ]")
+            self.lines.append("")
+
+        settings = self.data.get("settings", {})
+        if settings:
+            width = colwidth(settings.items())
+            title = "settings"
+            self.lines.append(f"{title:<{width+MARGIN}}:")
+            for attr, val in settings.items():
+                self.lines.append(f"{' ' * MARGIN}{attr:<{width}}: {val}")
+            self.lines.append("")
+
+        tokens = self.data.get("tokens", {})
+        simple = self.data.get("tokens-simple", {})
+
+        idx = tokens.copy()
+        idx.update(simple)
+
+        width = colwidth(idx.items()) + (MARGIN * 2)
+        title = "tokens"
+        self.lines.append(f"{title:<{width}}:")
+        for key, attrs in tokens.items():
+            if ":" in key:
+                key = repr(key)
+            key = ' ' * MARGIN + key
+            self.lines.append(f"{key:<{width}}:")
+            for attr, val in attrs.items():
+                attr = ' ' * (MARGIN*2) + attr
+                if isinstance(val, list):
+                    if len(val) > 1:
+                        self.lines.append(f"{attr:<{width}}:")
+                        for item in val:
+                            self.lines.append(f"{' ' * (width)}  - {item}")
+                        continue
+                    else:
+                        val = repr(val)
+
+                self.lines.append(f"{attr:<{width}}: {val}")
+            self.lines.append("")
+
+        for key, color in simple.items():
+            key = ' ' * MARGIN + key
+            self.lines.append(f"{key:<{width}}: {color}")
+                    
+        self.lines.append("")
+
+        print(*self.lines, sep="\n")
+            
+
+
+class Token():
+    ANON_TOKENS = 0
+    
+    def __init__(self, token, doc):
+        self.data = token
+        self.settings = token.get("settings", {})
+        self.name = token.get("name", "").strip()
+        self.scope = token.get("scope", "")
+        self.doc = doc
+    
+    @property
+    def key(self):
+        if self.is_simple():
+            return self.scopes[0]
+        if not self.name:
+            self.ANON_TOKENS += 1
+            return f"token-{self.ANON_TOKENS}"
+        return self.name
+
+    @property
+    def scopes(self):
+        if isinstance(self.scope, list):
+            return self.scope
+        elif isinstance(self.scope, str):
+            return [s.strip() for s in self.scope.split(",")]
+
+    def is_simple(self) -> bool:
+        can_be = len(self.settings) == 1 and \
+            len(self.scopes) == 1 and \
+            "foreground" in self.settings
+
+        if can_be and not self.name:
+            return True
+        
+        return can_be and " " not in self.scopes[0]
+        
+    def to_json(self):
+        if self.is_simple():
+            self.doc.yml.add_color(self.settings["foreground"])
+            return self.doc.yml.colors.ref(self.settings["foreground"])
+        
+        group = {}
+        for attr, value in self.settings.items():
+            if not value:
+                continue
+            if is_color(value):
+                self.doc.yml.add_color(value)
+                value = self.doc.yml.colors.ref(value)
+                if ERRORS:
+                    exit(1)
+            group[attr] = value.strip()
+
+        group["scope"] = self.scopes
+        return group
+
+def err(*args):
+    """."""
+    ERRORS.append(args)
+    print("Error", *args, file=sys.stderr)
+
+# yml to json
+# parse tokens
+# for key, attrs in yml.get("tokens", {}).items():
+#     token = {}
+#     if isinstance(attrs, list):
+#         token["foreground"] = attrs
+#         token["scope"] = key.split(", ")
+#     else:
+#         token = attrs
+#         token["name"] = key
+#         token["scope"] = token.get("scope", [])
+#     tokens.append(token)
+
+def is_color(value):
+    """."""
+    color = str(value).upper().strip()
+    if color.startswith("#") and len(color) in (7, 9):
+        return True
+    return False
+
+def color_link(color, colors):
+    """."""
+    color = is_color(color)
+    if not color or color in colors:
+        return
+    
+    colors.append(color)
+
+    link = f"https://www.colorhexa.com/{color}"
+    line = f"- &name                   [ name                   ,      {color}     ] # {link}"
+    print(line)
+
+def colwidth(table):
+    return max([len(row[0]) for row in table]) + MARGIN
+    
+@click.command()
+@click.option("-c", "--color-file", type=click.File("r"))
+@click.argument("src", type=click.File("r"))
+def main(color_file, src):
+    """Convert <src> to yml."""
+    yml = YAML()
+    yml.read(color_file, keys=["colors"])
+
+    doc = JSON(src, yml)
+    doc.parse()
+    yml.dump()
+
+            
+if __name__ == "__main__":
+    main()
