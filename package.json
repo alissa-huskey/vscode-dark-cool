@@ -3,8 +3,10 @@
     "displayName": "Dark and Cool Theme",
     "description": "A personal dark theme with cool colors.",
     "publisher": "alissahuskey",
-    "version": "0.0.3",
-    "extensionKind": [ "ui" ],
+    "version": "0.1.0",
+    "extensionKind": [
+        "ui"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/alissa-huskey/dark-cool-vscode.git"
