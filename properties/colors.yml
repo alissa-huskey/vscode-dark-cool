@@ -1,12 +1,15 @@
 colors:
 - &near-black             [ near-black             ,      0a0a0a     ]
+# - &charcoal               [ charcoal               ,      111016     ]
 - &charcoal               [ charcoal               ,      0f0f0f     ]
 - &midnight               [ midnight               ,      101316     ]
+- &ink                    [ ink                    ,      1e0c31     ]
 - &black-gray             [ black-gray             ,      232530     ]
 - &light-gray             [ light-gray             ,      AAB1C0     ]
 - &purple                 [ purple                 ,      6D57FFBB   ]
 - &mint                   [ mint                   ,      80CBC4     ]
 - &light-blue             [ light-blue             ,      88c0d0     ]
+- &light-blue-sheer       [ light-blue-sheer       ,      88c0d099   ]
 - &black                  [ black                  ,      000000     ]
 - &teal                   [ teal                   ,      008097     ]
 - &dark-purple            [ dark-purple            ,      4c5ead58   ]
@@ -19,221 +22,236 @@ colors:
 - &soft-blue-sheer        [ soft-blue-sheer        ,      61AFEF4F   ]     # 4F=79
 - &soft-blue-semi-sheer   [ soft-blue-semi-sheer   ,      61AFEF9f   ]     # 9F=159
 - &peacock                [ peacock                ,      148b97     ]
+- &kali-blue              [ kali-blue              ,      024f5940   ]
+- &washed-black           [ washed-black           ,      1f2326     ]
+- &dark-gray              [ dark-gray              ,      495162     ]
+- &pale-blue              [ pale-blue              ,      add6ff26   ]   # 13   13   13
+- &dark-slate             [ dark-slate             ,      add6ff26   ]   # 13   13   13
 
 elements:
 
-- element   :  Frame BG
-  desc      :  frame-like workbench elements
-  examples  :  [ "activity bar", "sidebar section titles" ]
-  color     :  *near-black
-  keys      :
-               - activityBar.background
-               - activityBar.border
-               - editorGroupHeader.tabsBackground
-               - editorGroup.border
-               - editorGutter.background
-               - panel.background
-               - sideBarSectionHeader.backgroun
-               - statusBar.background
-               - statusBar.noFolderBackground
-               - tab.activeBackground
+  Frame BG                                      :
+    desc                                        :  frame-like workbench elements
+    examples                                    :  [ "activity bar", "sidebar section titles" ]
+    color                                       :  *near-black
+    keys                                        :
+                                                   - activityBar.background
+                                                   - activityBar.border
+                                                   - editorGroupHeader.tabsBackground
+                                                   - editorGroup.border
+                                                   - editorGutter.background
+                                                   - panel.background
+                                                   - sideBarSectionHeader.backgroun
+                                                   - statusBar.background
+                                                   - statusBar.noFolderBackground
+                                                   - tab.activeBackground
 
-- element   :  Editor BG
-  desc      :  editor
-  color     :  *charcoal
-  keys      :
-               - editor.background
+  Editor BG                                     :
+    desc                                        :  editor
+    color                                       :  *charcoal
+    keys                                        :
+                                                   - editor.background
 
-- element   :  Area BG
-  examples  :  [ "sidebar", "widgets" ]
-  desc      :  interactive areas
-  color     :  *midnight
-  keys      :
-               - debugToolBar.background
-               - dropdown.background
-               - dropdown.listBackground
-               - editorWidget.background
-               - input.background
-               - inputOption.activeBackground
-               - list.inactiveSelectionBackground
-               - sideBar.background
-               - statusBar.debuggingBackground
+  Area BG                                       :
+    examples                                    :  [ "sidebar", "widgets" ]
+    desc                                        :  interactive areas
+    color                                       :  *midnight
+    keys                                        :
+                                                   - debugToolBar.background
+                                                   - dropdown.background
+                                                   - dropdown.listBackground
+                                                   - editorWidget.background
+                                                   - input.background
+                                                   - inputOption.activeBackground
+                                                   - list.inactiveSelectionBackground
+                                                   - sideBar.background
+                                                   - statusBar.debuggingBackground
 
-- element   :  Area Border
-  examples  :  [ "between sidebar and editor" ]
-  desc      :  subtle border separating areas
-  color     :  *black-gray
-  keys      :
-               - debugToolBar.background
-               - sideBar.border
-               - diffEditor.border
-               - contrastBorder
-               - input.border
-               - statusBar.noFolderBorder
-               - dropdown.border
-               - statusBar.border
+  Area Border                                   :
+    examples                                    :  [ "between sidebar and editor" ]
+    desc                                        :  subtle border separating areas
+    color                                       :  *black-gray
+    keys                                        :
+                                                   - debugToolBar.background
+                                                   - sideBar.border
+                                                   - diffEditor.border
+                                                   - contrastBorder
+                                                   - input.border
+                                                   - statusBar.noFolderBorder
+                                                   - dropdown.border
+                                                   - statusBar.border
 
-- element   :  Text FG
-  examples  :  [ "editor text" ]
-  desc      :  overall text
-  color     :  *black-gray
-  keys      :
-               - foreground
-               - editor.foreground
+  Text FG                                       :
+    examples                                    :  [ "editor text" ]
+    desc                                        :  overall text
+    color                                       :  *black-gray
+    keys                                        :
+                                                   - foreground
+                                                   - editor.foreground
 
-- element   :  Guide (Active)
-  examples  :  [ "indentation guides", "active tab" ]
-  desc      :  accent line indicating the active area or element
-  color     :  *purple
-  keys      :
-               - activityBar.activeBorder
-               - panelTitle.activeBorder
-               - tab.activeBorder
-               - editorIndentGuide.activeBackground
-               - textBlockQuote.border
-               - tree.indentGuidesStroke
+  Guide (Active)                                :
+    examples                                    :  [ "indentation guides", "active tab" ]
+    desc                                        :  accent line indicating the active area or element
+    color                                       :  *purple
+    keys                                        :
+                                                   - activityBar.activeBorder
+                                                   - panelTitle.activeBorder
+                                                   - tab.activeBorder
+                                                   - editorIndentGuide.activeBackground
+                                                   - textBlockQuote.border
+                                                   - tree.indentGuidesStroke
 
-- element   :  Text FG (Emphasis)
-  examples  :  [ "links", "typed letters in command palette" ]
-  desc      :  emphasized text
-  color     :  *mint
-  keys      :
-               - textLink.foreground
-               - list.highlightForeground
-               - list.inactiveSelectionForeground
+  Text FG (Emphasis)                            :
+    examples                                    :  [ "links", "typed letters in command palette" ]
+    desc                                        :  emphasized text
+    color                                       :  *mint
+    keys                                        :
+                                                   - textLink.foreground
+                                                   - list.highlightForeground
+                                                   - list.inactiveSelectionForeground
+                                                   - pickerGroup.foreground
 
-- element   :  Icon BG (Emphasis)
-  examples  :  [ "SCM change count" ]
-  desc      :  emphasized icons
-  color     :  *light-blue
-  keys      :
-               - badge.background
-               - statusBarItem.remoteBackground
-               - activityBarBadge.background
+  Cursor BG                                     :
+    examples                                    :  []
+    readme                                      :  false
+    desc                                        :  cursor
+    color                                       :  *black
+    keys                                        :
+                                                   - editorCursor.background
 
-- element   :  Cursor BG
-  examples  :  []
-  readme    :  false
-  desc      :  cursor
-  color     :  *black
-  keys      :
-               - editorCursor.background
+  Area Border (Focus)                           :
+    desc                                        :  accent indicating the active/focus area
+    color                                       :  *teal
+    examples                                    :  [ "input boxes" ]
+    readme                                      :  true
+    keys                                        :
+                                                   - focusBorder
+                                                   - widget.shadow
 
-- element   :  Area Border (Focus)
-  desc      :  accent indicating the active/focus area
-  color     :  *teal
-  examples  :  [ "input boxes" ]
-  readme    :  true
-  keys      :
-               - focusBorder
-               - widget.shadow
+  SCM Untracked Status (FG)                     :
+    desc                                        :  untracked files
+    color                                       :  *maroon
+    examples                                    :  [ "SCM changes, status character" ]
+    readme                                      :  false
+    keys                                        :
+                                                   - gitDecoration.deletedResourceForeground
 
-- element   :  SCM Untracked Status (FG)
-  desc      :  untracked files
-  color     :  *maroon
-  examples  :  [ "SCM changes, status character" ]
-  readme    :  false
-  keys      :
-               - gitDecoration.deletedResourceForeground
+  SCM Changed Status (FG)                       :
+    desc                                        :
+    color                                       :
+    examples                                    :  [ "SCM changes, status character" ]
+    readme                                      :  false
+    keys                                        :
 
-- element   :  SCM Changed Status (FG)
-  desc      :
-  color     :
-  examples  :  [ "SCM changes, status character" ]
-  readme    :  false
-  keys      :
+  SCM Ignored Status (FG)                       :
+    desc                                        :
+    color                                       :
+    examples                                    :  [ "SCM changes, status character" ]
+    readme                                      :  false
+    keys                                        :
 
-- element   :  SCM Ignored Status (FG)
-  desc      :
-  color     :
-  examples  :  [ "SCM changes, status character" ]
-  readme    :  false
-  keys      :
+  SCM Added Status (FG)                         :
+    desc                                        :
+    color                                       :
+    examples                                    :  [ "SCM changes, status character" ]
+    readme                                      :  false
+    keys                                        :
 
-- element   :  SCM Added Status (FG)
-  desc      :
-  color     :
-  examples  :  [ "SCM changes, status character" ]
-  readme    :  false
-  keys      :
+  SCM Deleted Status (FG)                       :
+    desc                                        :
+    color                                       :
+    examples                                    :  [ "SCM changes, status character" ]
+    readme                                      :  false
+    keys                                        :
 
-- element   :  SCM Deleted Status (FG)
-  desc      :
-  color     :
-  examples  :  [ "SCM changes, status character" ]
-  readme    :  false
-  keys      :
+  # 6ab0a3 (muted dark mint), 0080a140 (teal)
+  Item BG (Selection)                           :
+    desc                                        :  selected list item
+    color                                       :  *dark-purple
+    examples                                    :  [ "file explorer" ]
+    readme                                      :  true
+    keys                                        :
+                                                   - list.activeSelectionBackground
+                                                   - list.focusBackground
+                                                   - selection.background
 
-- element   :  Item BG (Selection)
-  desc      :  selected list item
-  color     :  *dark-purple
-  examples  :  [ "file explorer" ]
-  readme    :  true
-  keys      :
-               - list.activeSelectionBackground
-               - list.focusBackground
+  "Item BG (Drag & Drop)"                       :
+    desc                                        :  list item drag & drop feedback
+    color                                       :  *lavendar
+    examples                                    :  [ "file explorer" ]
+    readme                                      :  true
+    keys                                        :
+                                                   - list.dropBackground
+                                                   - statusBarItem.hoverBackground
+                                                   - sideBar.dropBackground
 
-- element   :  Item BG (Drag & Drop)
-  desc      :  list item drag & drop feedback
-  color     :  *lavendar
-  examples  :  [ "file explorer" ]
-  readme    :  true
-  keys      :
-               - list.dropBackground
-               - statusBarItem.hoverBackground
-               - sideBar.dropBackground
+  Text FG (Active)                              :
+    desc                                        :  active links
+    color                                       :  *teal
+    examples                                    :  []
+    readme                                      :  false
+    keys                                        :
+                                                   - textLink.activeForeground
+                                                   - editorLink.activeForeground
 
-- element   :  Text FG (Active)
-  desc      :  active links
-  color     :  *teal
-  examples  :  []
-  readme    :  false
-  keys      :
-               - textLink.activeForeground
-               - editorLink.activeForeground
+  # 26a6a6 (bright teal), 2d8da1 (muted teal)
+  Icon BG (Emphasis)                            :
+    examples                                    :  [ "SCM change count" ]
+    desc                                        :  emphasized icons
+    color                                       :  *light-blue                   
+    keys                                        :
+                                                   - activityBarBadge.background
+                                                   - badge.background
+                                                   - extensionButton.prominentBackground
+                                                   - statusBarItem.remoteBackground
+  Icon FG (Emphasis)                            :
+    desc                                        :  foreground color of emphasized areas on sidebar and activity bar
+    color                                       :  *black
+    examples                                    :  []
+    readme                                      :  false
+    keys                                        :
+                                                   - activityBarBadge.foreground
+                                                   - badge.foreground
+                                                   - extensionButton.prominentForeground
+                                                   - statusBarItem.remoteForeground
 
-- element   :  Icon FG (Emphasis)
-  desc      :  foreground color of emphasized areas on sidebar and activity bar
-  color     :  *black
-  examples  :  []
-  readme    :  false
-  keys      :
-               - activityBarBadge.foreground
+  Document Text FG                              :
+    desc                                        :  document text
+    color                                       :  *blue-black
+    examples                                    :  [ "welcome page" ]
+    readme                                      :  false
+    keys                                        :
+                                                   - textCodeBlock.background
+                                                   - textBlockQuote.background
 
-- element   :  Document Text FG
-  desc      :  document text
-  color     :  *blue-black
-  examples  :  [ "welcome page" ]
-  readme    :  false
-  keys      :
-               - textCodeBlock.background
-               - textBlockQuote.background
+  statusBar.debuggingForeground                 :   *green
+  editorCursor.foreground                       :   *teal
+  editor.lineHighlightBorder                    :   *black
+  tab.inactiveBackground                        :   *washed-black
+  editor.selectionBackground                    :   *pale-blue
+  editorLineNumber.foreground                   :   *dark-slate
+  editor.lineHighlightBackground                :   *kali-blue
+  button.background                             :   *blue-black  # 2b313c       # dark grayish blue, eclipse    17   19   24
+  button.secondaryBackground                    :   *ink
+# selection.background                          :   *light-blue-sheer           # why is this here?
 
-Keys:
-- statusBar.debuggingForeground                 :   *green
-- editorCursor.foreground                       :   *teal
-- editor.lineHighlightBorder                    :   *black
-- tab.inactiveBackground                        :   1f2326       # washed black
-- editor.selectionBackground                    :   add6ff26     # pale blue
-- selection.background                          :   88c0d099     # muted cyan
-- editorLineNumber.foreground                   :   495162       # dark grayish blue             29   32   38
-- editor.lineHighlightBackground                :   024f5940     # dark cyan, kali blue
-- button.background                             :   2b313c       # dark grayish blue, eclipse    17   19   24
-- button.secondaryBackground                    :   1e0c31       # black violet
+  diffEditor.insertedTextBackground             :   *forest-green
+  diffEditor.removedTextBackground              :   *brick-red
+  diffEditor.diagonalFill                       :   *dark-gray
+  list.hoverBackground                          :   *blue-black  # 1b2432       # black blue                    11   14   20
 
-- diffEditor.insertedTextBackground             :   *forest-green
-- diffEditor.removedTextBackground              :   *brick-red
-- diffEditor.diagonalFill                       :   22222275     # dark gray                     13   13   13
-- list.hoverBackground                          :   1b2432       # black blue                    11   14   20
-- gitDecoration.deletedResourceForeground       :   EF535090     # pale red
-- gitDecoration.modifiedResourceForeground      :   a2bffc       # pastel blue
-- gitDecoration.untrackedResourceForeground     :   addb67ff     # bright apple green
-- gitDecoration.ignoredResourceForeground       :   395a75       # denim blue
-- gitDecoration.conflictingResourceForeground   :   ffeb95cc     # canary yellow
-- editor.findMatchBackground                    :   *soft-blue-sheer
-- editor.findMatchHighlightBackground           :   *black
-- editor.findMatchHighlightBorder               :   *soft-blue-semi-sheer
-- editor.wordHighlightBackground                :   *soft-blue-sheer
-- editor.wordHighlightBorder                    :   *soft-blue-semi-sheer
-- editor.wordHighlightStrongBackground          :   *soft-blue-sheer
-- editor.wordHighlightStrongBorder              :   *soft-blue-semi-sheer
+  gitDecoration.deletedResourceForeground       :   EF535090     # pale red
+  gitDecoration.modifiedResourceForeground      :   a2bffc       # pastel blue
+
+  # 87A96B (Asparagus), 71BC78 (fern), 50C878 (emerald), 90EE90 (light green), 98FB98 (pale green), ACE1AF (Celadon)
+  # 00CC99 (Caribbean green), 9FE2BF (sea foam green), 3AB09E (Keppel)
+  gitDecoration.untrackedResourceForeground     :   addb67ff     # bright apple green
+  gitDecoration.ignoredResourceForeground       :   395a75       # denim blue
+  gitDecoration.conflictingResourceForeground   :   ffeb95cc     # canary yellow
+  editor.findMatchBackground                    :   *soft-blue-sheer
+  editor.findMatchHighlightBackground           :   *black
+  editor.findMatchHighlightBorder               :   *soft-blue-semi-sheer
+  editor.wordHighlightBackground                :   *soft-blue-sheer
+  editor.wordHighlightBorder                    :   *soft-blue-semi-sheer
+  editor.wordHighlightStrongBackground          :   *soft-blue-sheer
+  editor.wordHighlightStrongBorder              :   *soft-blue-semi-sheer

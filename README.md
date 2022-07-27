@@ -48,15 +48,24 @@ Colors
 | Icon BG (Emphasis)  | ![#88C0D0][88C0D0] `#88C0D0`       | Light Blue | emphasized icons (ie SCM change count)                                                |
 | Area Border (Focus) | ![#008097][008097] `#008097`       | Teal       | accent indicating the active/focus area (ie input boxes)                              |
 
-[0A0A0A]: https://placehold.it/20/0A0A0A/?text=+
-[0F0F0F]: https://placehold.it/20/0F0F0F/?text=+
-[101316]: https://placehold.it/20/101316/?text=+
-[232530]: https://placehold.it/20/232530/?text=+
-[AAB1C0]: https://placehold.it/20/AAB1C0/?text=+
-[6D57FFBB]: https://placehold.it/20/6D57FFBB/?text=+
-[80CBC4]: https://placehold.it/20/80CBC4/?text=+
-[88C0D0]: https://placehold.it/20/88C0D0/?text=+
-[008097]: https://placehold.it/20/008097/?text=+
+[0A0A0A]: https://via.placeholder.com/20/0A0A0A/?text=+
+[0F0F0F]: https://via.placeholder.com/20/0F0F0F/?text=+
+[101316]: https://via.placeholder.com/20/101316/?text=+
+[232530]: https://via.placeholder.com/20/232530/?text=+
+[AAB1C0]: https://via.placeholder.com/20/AAB1C0/?text=+
+[6D57FFBB]: https://via.placeholder.com/20/6D57FFBB/?text=+
+[80CBC4]: https://via.placeholder.com/20/80CBC4/?text=+
+[88C0D0]: https://via.placeholder.com/20/88C0D0/?text=+
+[008097]: https://via.placeholder.com/20/008097/?text=+
+
+Install
+-------
+
+Download it on the [VS Code Marketplace][download] or install it on the command line:
+
+```bash
+code --install-extension alissahuskey.vscode-python-class
+```
 
 Known issues
 ------------
@@ -83,10 +92,13 @@ the same colors as the default dark theme.
 },
 ```
 
-This feature request for the ability to theme changed characters is tracked
-at
-[microsoft/vscode#103207](https://github.com/microsoft/vscode/issues/103207)
-and has been under consideration since September 2020.
+This feature request for the ability to theme changed characters is tracked at
+[microsoft/vscode#103207][vscode#103207] and has been under consideration since
+September 2020.
 
 **Unthemed elements**
 - tags (`"recently used"`) in command palette and settings dropdowns
+
+
+[download]: http://marketplace.visualstudio.com/items?itemName=alissahuskey.dark-cool-color-theme
+[vscode#103207]: https://github.com/microsoft/vscode/issues/103207
