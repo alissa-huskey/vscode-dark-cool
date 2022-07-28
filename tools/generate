@@ -12,6 +12,7 @@ from string import Template
 import httpx
 from random import choice
 import asyncio
+import argparse
 
 import tabulate
 from tabulate import tabulate as table
@@ -217,27 +218,51 @@ async def main():
 
     is_verbose, is_dryrun, gen_theme, gen_readme = False, False, False, False
 
-    if any([arg in sys.argv for arg in ["-t", "--theme", "-a", "--all"]]):
-        gen_theme = True
+    parser = argparse.ArgumentParser(description='Generate README.md and dark-cool-color-theme.json')
 
-    if any([arg in sys.argv for arg in ["-r", "--readme", "-a", "--all"]]):
-        gen_readme = True
+    parser.add_argument(
+        "--theme", "-t",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Generate dark-cool-color-theme.json",
+    )
 
-    if any([arg in sys.argv for arg in ["-v", "--verbose"]]):
-        is_verbose = True
+    parser.add_argument(
+        "--readme", "-r",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Generate README.md",
+    )
 
-    if any([arg in sys.argv for arg in ["-d", "--dry-run"]]):
-        is_dryrun = True
+    parser.add_argument(
+        "--all", "-a",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Generate all files",
+    )
 
-    if any([arg in sys.argv for arg in ["-h", "--help"]]):
-        usage()
-        exit(0)
+    parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Verbose mode",
+    )
 
-    if gen_theme:
-        generate_theme(is_verbose, is_dryrun)
+    parser.add_argument(
+        "--dry-run", "-d",
+        action="store_true",
+        help="Dry run mode",
+    )
 
-    if gen_readme:
-        await generate_readme(is_verbose, is_dryrun)
+    args = parser.parse_args()
+
+    is_verbose = args.verbose
+    is_dryrun = args.dry_run
+
+    if args.theme or args.all:
+        generate_theme(args.verbose, args.dry_run)
+
+    if args.readme or args.all:
+        await generate_readme(args.verbose, args.dry_run)
 
 
 if __name__ == "__main__":
