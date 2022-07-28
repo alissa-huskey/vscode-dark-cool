@@ -5,6 +5,13 @@ All notable changes to the "dark-cool-color-theme" extension will be documented 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+0.1.1 - 2021-07-27
+------------------
+
+### Changed
+
+- README changes
+
 0.0.3 - 2021-01-31
 ------------------
 

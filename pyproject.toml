@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dark-cool-vscode-tools"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Alissa Huskey <alissa.huskey@gmail.com>"]
 
@@ -9,6 +9,7 @@ python = "^3.8"
 tabulate = "^0.8.7"
 click = "^7.1.2"
 PyYAML = "^5.4.1"
+pynvim = "^0.4.3"
 
 [tool.poetry.dev-dependencies]
 

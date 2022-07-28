@@ -5,6 +5,7 @@
 	"groups": [
 		{
 			"element": "Frame BG",
+      "readme": true,
 			"hex": "0a0a0a",
 			"color-desc": "near black",
 			"desc": "frame-like workbench elements",
@@ -24,6 +25,7 @@
 		},
 		{
 			"element": "Editor BG",
+      "readme": true,
 			"hex": "0f0f0f",
 			"color-desc": "charcoal",
 			"desc": "editor",
@@ -33,6 +35,7 @@
 		},
 		{
 			"element": "Area BG",
+      "readme": true,
 			"hex": "101316",
 			"color-desc": "midnight",
 			"desc": "interactive areas",
@@ -51,6 +54,7 @@
 		},
 		{
 			"element": "Area Border",
+      "readme": true,
 			"hex": "232530",
 			"color-desc": "black gray",
 			"desc": "subtle border separating areas",
@@ -66,6 +70,7 @@
 		},
 		{
 			"element": "Text FG",
+      "readme": true,
 			"hex": "AAB1C0",
 			"color-desc": "light gray",
 			"desc": "overall text",
@@ -77,6 +82,7 @@
 		},
 		{
 			"element": "Guide (Active)",
+      "readme": true,
 			// "hex": "6262a430",
 			"hex": "6D57FFBB",
 			"color-desc": "purple",
@@ -93,6 +99,7 @@
 		},
 		{
 			"element": "Text FG (Emphasis)",
+      "readme": true,
 			// 148b97 (peacock)
 			"hex": "80CBC4",
 			"color-desc": "mint",
@@ -106,6 +113,7 @@
 		},
 		{
 			"element": "Icon BG (Emphasis)",
+      "readme": true,
 			"hex": "88c0d0",
 			"color-desc": "light blue",
 			"desc": "emphasized icons",
@@ -114,6 +122,18 @@
 				"badge.background",
 				"statusBarItem.remoteBackground",
 				"activityBarBadge.background"
+			]
+		},
+		{
+			"element": "Area Border (Focus)",
+      "readme": true,
+			"hex": "008097",
+			"color-desc": "teal",
+			"desc": "accent indicating the active/focus area",
+			"examples": [ "input boxes" ],
+			"theme-colors": [
+				"focusBorder",
+				"widget.shadow"
 			]
 		},
 		{
@@ -128,19 +148,8 @@
 			"readme": false
 		},
 		{
-			"element": "Area Border (Focus)",
-			"hex": "008097",
-			"color-desc": "teal",
-			"desc": "accent indicating the active/focus area",
-			"examples": [ "input boxes" ],
-			"theme-colors": [
-				"focusBorder",
-				"widget.shadow"
-			]
-		},
-		{
 			"element": "SCM Untracked Status (FG)",
-			"hex"
+			"hex": "ae1600",
 			"color-desc": "maroon",
 			"desc": "untracked files",
 			"examples": [ "SCM changes, status character" ],

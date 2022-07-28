@@ -9,6 +9,7 @@ import sys
 from pprint import pprint
 import re
 from string import Template
+from subprocess import run
 
 import tabulate
 from tabulate import tabulate as table
@@ -28,6 +29,38 @@ def abort(*args, **kwargs):
     exit(1)
 
 
+def usage():
+    """print usage info"""
+    options = [
+        ["r", "readme", "generate readme"],
+        ["t", "theme", "generate theme"],
+        ["a", "all", "generate all"],
+        ["d", "dry-run", "avoid write actions"],
+        ["v", "verbose", "preview generated theme"],
+        ["h", "help", "show this help screen"],
+    ]
+
+    rows = [(f" -{short}, --{lng} ", desc) for short,lng,desc in options]
+
+    print("\ngenerate theme from colors.jsonc and tokens.jsonc\n")
+    print(table(rows, tablefmt="plain"))
+    print()
+
+
+def load_json(filename: str):
+    """Return JSON decoded object from file in DATA_DIR or exit with error"""
+    with open(DATA_DIR.joinpath(filename)) as fh:
+        try:
+            contents = strip_comments(fh)
+            data = json.loads(contents)
+        except json.decoder.JSONDecodeError as e:
+            lines = contents.splitlines()
+            abort(f"JSON errors found -- {filename}:{e.lineno}:{e.colno}\n"
+                  f"     {e.msg}"
+                  f"     '{lines[e.lineno-1]}'")
+    return data
+
+
 def strip_comments(fh) -> str:
     """Return contents of fh file stripped of // style comments
     Params
@@ -41,29 +74,31 @@ def strip_comments(fh) -> str:
     return "\n".join(lines)
 
 
-def load_json(filename: str):
-    """Return JSON decoded object from file in DATA_DIR or exit with error"""
-    with open(DATA_DIR.joinpath(filename)) as fh:
-        try:
-            data = json.loads(strip_comments(fh))
-        except json.decoder.JSONDecodeError as e:
-            abort(f"JSON errors found -- {filename}:{e.lineno}:{e.colno}\n"
-                  f"     {e.msg}")
-    return data
+def fetch_swatches(is_dryrun=False, is_verbose=False, *colors):
+    program = ROOT_DIR / "tools" / "fetch-swatch"
+    command = [str(program), *colors]
+
+    if is_verbose:
+        print(f"\033[2m> {' '.join(command)}\033[0m\n", file=sys.stderr)
+
+    if is_dryrun:
+        return
+
+    run(command, check=True)
 
 
-def generate_color_markdown(filename: str) -> (str, str):
+def generate_color_markdown(filename: str, is_dryrun=False, is_verbose=False) -> (str, str):
     """Generate the markdown strings to be embedded in README.tpl.md"""
     manifest = load_json(filename)
     rows, refs, markdown = [], [], ""
 
-    color_tpl = Template("![#${hex}][${hex}] `#${hex}`")
-    ref_tpl = Template("[${hex}]: https://placehold.it/20/${hex}/?text=+")
+    colors = [clr for clr in manifest["groups"] if clr.get("readme")]
+    fetch_swatches(is_dryrun, is_verbose, *[c["hex"] for c in colors if c.get("hex")])
 
-    for clr in manifest["groups"]:
-        if not clr.get("readme", True):
-            continue
+    color_tpl = Template("![#${hex}][] `#${hex}`")
+    ref_tpl = Template("[#${hex}]: screenshots/swatches/${hex}.png")
 
+    for clr in colors:
         for key in ("element", "hex", "desc", "color-desc"):
             if not key in clr or not clr.get(key, None):
                 abort(f"Missing required item: {key} from color: {clr}")
@@ -104,43 +139,6 @@ def generate_theme_colors(filename: str) -> dict:
     return colors
 
 
-def usage():
-    """print usage info"""
-    options = [
-        ["r", "readme", "generate readme"],
-        ["t", "theme", "generate theme"],
-        ["a", "all", "generate all"],
-        ["d", "dry-run", "avoid write actions"],
-        ["v", "verbose", "preview generated theme"],
-        ["h", "help", "show this help screen"],
-    ]
-
-    rows = [(f" -{short}, --{lng} ", desc) for short,lng,desc in options]
-
-    print("\ngenerate theme from colors.jsonc and tokens.jsonc\n")
-    print(table(rows, tablefmt="plain"))
-    print()
-
-
-def save_file(filepath, contents: str, is_dryrun: bool=False):
-    """After confirming write contents to filepath
-
-    Params
-    ------
-    filepath (pathlib.Path): where to write file
-    contents (str): contents to write to file
-    is_dryrun (bool, default=False): do nothing if True
-    """
-    if is_dryrun:
-        return
-
-    response = input(f"Save {filepath.name}? [y/N] ").strip().lower()
-    if response not in ["y", "yes"]:
-        return
-
-    filepath.write_text(contents)
-
-
 def generate_theme(is_verbose: bool, is_dryrun: bool):
     """generate and save theme file"""
 
@@ -164,12 +162,31 @@ def generate_readme(is_verbose: bool, is_dryrun: bool):
     """generate README.md from colors.jsonc"""
     tpl_file = Path(ROOT_DIR).joinpath("docs", "README.tpl.md")
     tpl = Template(tpl_file.read_text())
-    contents = tpl.substitute(**generate_color_markdown("colors.jsonc"))
+    contents = tpl.substitute(**generate_color_markdown("colors.jsonc", is_dryrun, is_verbose))
 
     if is_verbose:
         print(contents)
 
     save_file(ROOT_DIR.joinpath("README.md"), contents, is_dryrun)
+
+
+def save_file(filepath, contents: str, is_dryrun: bool=False):
+    """After confirming write contents to filepath
+
+    Params
+    ------
+    filepath (pathlib.Path): where to write file
+    contents (str): contents to write to file
+    is_dryrun (bool, default=False): do nothing if True
+    """
+    if is_dryrun:
+        return
+
+    response = input(f"Save {filepath.name}? [y/N] ").strip().lower()
+    if response not in ["y", "yes"]:
+        return
+
+    filepath.write_text(contents)
 
 
 def main():

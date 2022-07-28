@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# fetch-swatch -- script to download color swatches
+#
+# usage: fetch-swatch HEX [HEX...]
+#
+
+read -r rootdir < <(cd "${0%/*}/.." && pwd -P) || :
+shopt -s extglob
+
+abort() {
+  printf "\033[31mError\033[0m %s\n" "${*}"
+  exit 1
+}
+
+usage() {
+
+  printf "\n  fetch-swatch -- script to download color swatches\n\n"
+
+  printf "  usage: fetch-swatch HEX [HEX...]\n\n"
+
+  exit
+}
+
+valid_image() {
+  local image="$1"
+
+  file -I ${image} | grep -q image
+}
+
+download() {
+  local hex="$1" agent url tmpfile outfile
+
+  [[ -n "${hex}" ]] || abort "Hex color required"
+
+  agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15'
+  url="https://via.placeholder.com/20/${hex}/?text=+"
+  tmpfile="${rootdir}/tmp/${hex}.png"
+  outfile="${rootdir}/screenshots/swatches/${hex}.png"
+
+  curl --silent --user-agent "$agent" "${url}" -o "${tmpfile}" || abort "Failed to download color swatch from: ${url}"
+
+  valid_image "${tmpfile}" || abort "Invalid color swatch: ${tmpfile}"
+
+  mv "${tmpfile}" "${outfile}" || abort "Failed to move temp file"
+}
+main() {
+  [[ "${*}" =~ -h|--help ]] && usage
+
+  while [[ $# -gt 0 ]]; do
+    download "$1"
+    shift
+  done
+}
+
+main ${1:+"$@"}
+

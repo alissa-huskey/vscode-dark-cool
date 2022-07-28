@@ -7,10 +7,21 @@ Dark and Cool
 Table of Contents
 -----------------
 
+* [Install](#install)
 * [Features](#features)
 * [Screenshots](#screenshots)
 * [Colors](#colors)
 * [Known issues](#known-issues)
+
+
+Install
+-------
+
+Download it on the [VS Code Marketplace][download] or install it on the command line:
+
+```bash
+code --install-extension alissahuskey.vscode-python-class
+```
 
 Features
 --------
@@ -18,7 +29,7 @@ Features
 * A dark as sin theme with just enough contrast to tell things apart.
 * Consistency in workbench elements of similar kind.
 * Sparingly employed accent colors that pop to indicate the focused/active
-* area/element.
+  area/element.
 * Source control diffs are themed to dark, unobtrusive colors.
 * Modestly themed buttons won't nag, they just want you to know they're there for you.
 
@@ -65,10 +76,13 @@ the same colors as the default dark theme.
 },
 ```
 
-This feature request for the ability to theme changed characters is tracked
-at
-[microsoft/vscode#103207](https://github.com/microsoft/vscode/issues/103207)
-and has been under consideration since September 2020.
+This feature request for the ability to theme changed characters is tracked at
+[microsoft/vscode#103207][vscode#103207] and has been under consideration since
+September 2020.
 
 **Unthemed elements**
 - tags (`"recently used"`) in command palette and settings dropdowns
+
+
+[download]: http://marketplace.visualstudio.com/items?itemName=alissahuskey.dark-cool-color-theme
+[vscode#103207]: https://github.com/microsoft/vscode/issues/103207
