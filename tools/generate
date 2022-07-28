@@ -2,27 +2,26 @@
 
 """Generate theme and README"""
 
+import argparse
+import asyncio
 import json
 from os import _exit as exit
 from pathlib import Path
-import sys
 from pprint import pprint
+from random import choice
 import re
 from string import Template
-import httpx
-from random import choice
-import asyncio
-import argparse
+import sys
 
+import httpx
 import tabulate
 from tabulate import tabulate as table
 
 tabulate.PRESERVE_WHITESPACE = True
 
 ROOT_DIR = Path(__file__).parent.parent.absolute()
-DATA_DIR = ROOT_DIR.joinpath("properties")
-THEMES_DIR = ROOT_DIR.joinpath("themes")
-
+DATA_DIR = ROOT_DIR / "properties"
+THEMES_DIR = ROOT_DIR / "docs"
 THEME_FILENAME = "dark-cool-color-theme.json"
 
 
@@ -32,199 +31,181 @@ def abort(*args, **kwargs):
     exit(1)
 
 
-def usage():
-    """print usage info"""
-    options = [
-        ["r", "readme", "generate readme"],
-        ["t", "theme", "generate theme"],
-        ["a", "all", "generate all"],
-        ["d", "dry-run", "avoid write actions"],
-        ["v", "verbose", "preview generated theme"],
-        ["h", "help", "show this help screen"],
-    ]
+class App:
 
-    rows = [(f" -{short}, --{lng} ", desc) for short,lng,desc in options]
+    def __init__(self, args):
+        self.args = args
+        self.is_verbose = args.verbose
+        self.is_dryrun = args.dry_run
 
-    print("\ngenerate theme from colors.jsonc and tokens.jsonc\n")
-    print(table(rows, tablefmt="plain"))
-    print()
+    def load_json(self, filename: str):
+        """Return JSON decoded object from file in DATA_DIR or exit with error"""
+        with open(DATA_DIR.joinpath(filename)) as fh:
+            try:
+                contents = self.strip_comments(fh)
+                data = json.loads(contents)
+            except json.decoder.JSONDecodeError as e:
+                lines = contents.splitlines()
+                abort(f"JSON errors found -- {filename}:{e.lineno}:{e.colno}\n"
+                    f"     {e.msg}"
+                    f"     '{lines[e.lineno-1]}'")
+        return data
 
+    def strip_comments(self, fh) -> str:
+        """Return contents of fh file stripped of // style comments
+        Params
+        ------
+        fh (file): a .read()-supporting file-like object
+        """
+        comment = re.compile(r"^\s*//")
+        trailing= re.compile(r"\s*//.*$")
 
-def load_json(filename: str):
-    """Return JSON decoded object from file in DATA_DIR or exit with error"""
-    with open(DATA_DIR.joinpath(filename)) as fh:
-        try:
-            contents = strip_comments(fh)
-            data = json.loads(contents)
-        except json.decoder.JSONDecodeError as e:
-            lines = contents.splitlines()
-            abort(f"JSON errors found -- {filename}:{e.lineno}:{e.colno}\n"
-                  f"     {e.msg}"
-                  f"     '{lines[e.lineno-1]}'")
-    return data
+        lines = [trailing.sub("", line) for line in fh if not comment.match(line)]
+        return "\n".join(lines)
 
+    async def fetch_swatches(self, *colors):
+        """Download swatch images."""
 
-def strip_comments(fh) -> str:
-    """Return contents of fh file stripped of // style comments
-    Params
-    ------
-    fh (file): a .read()-supporting file-like object
-    """
-    comment = re.compile(r"^\s*//")
-    trailing= re.compile(r"\s*//.*$")
+        if self.is_dryrun:
+            return
 
-    lines = [trailing.sub("", line) for line in fh if not comment.match(line)]
-    return "\n".join(lines)
+        agents = [
+            "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0",
+            "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
+            "Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0"
+        ]
 
+        async with httpx.AsyncClient(http2=True) as client:
 
-async def fetch_swatches(is_dryrun=False, is_verbose=False, *colors):
+            for code in colors:
 
-    if is_dryrun:
-        return
+                outfile = ROOT_DIR / "screenshots" / "swatches" / f"{code}.png"
+                url = f"https://via.placeholder.com/20/{code}/?text=+"
 
-    agents = [
-        "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0",
-        "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
-        "Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0"
-    ]
+                response = await client.get((url), headers={
+                    "user-agent": choice(agents),
+                })
 
-    async with httpx.AsyncClient(http2=True) as client:
+                if "image" not in response.headers["Content-Type"]:
+                    abort(f"Invalid color swatch: {url}")
 
-        for code in colors:
+                outfile.write_bytes(response.content)
 
-            outfile = ROOT_DIR / "screenshots" / "swatches" / f"{code}.png"
-            url = f"https://via.placeholder.com/20/{code}/?text=+"
+    async def generate_color_markdown(self, filename: str) -> (str, str):
+        """Generate the markdown strings to be embedded in README.tpl.md"""
+        manifest = self.load_json(filename)
+        rows, refs, markdown = [], [], ""
 
-            response = await client.get((url), headers={
-                "user-agent": choice(agents),
+        for c in manifest["groups"]:
+            if not c["hex"]:
+                continue
+            c["hex"] = c["hex"].upper()
+
+        colors = [clr for clr in manifest["groups"] if clr.get("readme")]
+        await self.fetch_swatches(*[c["hex"] for c in colors if c.get("hex")])
+
+        color_tpl = Template("![#${hex}][] `#${hex}`")
+        ref_tpl = Template("[#${hex}]: screenshots/swatches/${hex}.png")
+
+        for clr in colors:
+            for key in ("element", "hex", "desc", "color-desc"):
+                if not key in clr or not clr.get(key, None):
+                    abort(f"Missing required item: {key} from color: {clr}")
+
+            hexc = clr["hex"].lstrip("#").upper()
+            uses = ", ".join(clr.get("examples", []))
+            examples = f" (ie {uses})" if uses else ""
+
+            rows.append({
+                'Element': clr["element"],
+                'Hex': color_tpl.substitute(hex=hexc),
+                'Color': clr["color-desc"].title(),
+                'Description': f"{clr['desc']}{examples}",
             })
 
-            if "image" not in response.headers["Content-Type"]:
-                abort(f"Invalid color swatch: {url}")
+            refs.append(ref_tpl.substitute(hex=hexc))
 
-            outfile.write_bytes(response.content)
+        return dict(
+            colorTable=table(rows, headers="keys", tablefmt="github"),
+            refsDefs="\n".join(refs)
+        )
 
+    def generate_theme_colors(self, filename: str) -> dict:
+        """Return colors dict for theme JSON converted from colors.jsonc"""
+        manifest = self.load_json(filename)
+        colors = {}
 
-async def generate_color_markdown(filename: str, is_dryrun=False, is_verbose=False) -> (str, str):
-    """Generate the markdown strings to be embedded in README.tpl.md"""
-    manifest = load_json(filename)
-    rows, refs, markdown = [], [], ""
+        # generate colors from groups
+        for color in manifest["groups"]:
+            for key in color["theme-colors"]:
+                colors[key] = f"#{color['hex']}"
 
-    for c in manifest["groups"]:
-        if not c["hex"]:
-            continue
-        c["hex"] = c["hex"].upper()
+        # add individual colors
+        for key, hex in manifest["individual"].items():
+            colors[key] = f"#{hex}"
 
-    colors = [clr for clr in manifest["groups"] if clr.get("readme")]
-    await fetch_swatches(is_dryrun, is_verbose, *[c["hex"] for c in colors if c.get("hex")])
+        return colors
 
-    color_tpl = Template("![#${hex}][] `#${hex}`")
-    ref_tpl = Template("[#${hex}]: screenshots/swatches/${hex}.png")
+    def generate_theme(self):
+        """Generate and save theme file"""
 
-    for clr in colors:
-        for key in ("element", "hex", "desc", "color-desc"):
-            if not key in clr or not clr.get(key, None):
-                abort(f"Missing required item: {key} from color: {clr}")
-
-        hexc = clr["hex"].lstrip("#").upper()
-        uses = ", ".join(clr.get("examples", []))
-        examples = f" (ie {uses})" if uses else ""
-
-        row = {
-          'Element': clr["element"],
-          'Hex': color_tpl.substitute(hex=hexc),
-          'Color': clr["color-desc"].title(),
-          'Description': f"{clr['desc']}{examples}",
+        theme = {
+            "name": "Dark and Cool",
+            "type": "dark",
+            "colors": {},
+            "tokenColors": []
         }
-        rows.append(row)
-        refs.append(ref_tpl.substitute(hex=hexc))
+        theme["colors"] = self.generate_theme_colors("colors.jsonc")
+        theme["tokenColors"] = self.load_json("tokens.jsonc")
+        contents = json.dumps(theme, indent=4)
 
-    return dict(
-        colorTable=table(rows, headers="keys", tablefmt="github"),
-        refsDefs="\n".join(refs)
-    )
+        if self.is_verbose:
+            pprint(theme, sort_dicts=False)
 
+        self.save_file(THEMES_DIR.joinpath(THEME_FILENAME), contents)
 
-def generate_theme_colors(filename: str) -> dict:
-    """Return colors dict for theme JSON converted from colors.jsonc"""
-    manifest = load_json(filename)
-    colors = {}
+    async def generate_readme(self):
+        """Generate README.md from colors.jsonc"""
+        tpl_file = THEMES_DIR / "README.tpl.md"
+        tpl = Template(tpl_file.read_text())
+        md = await self.generate_color_markdown("colors.jsonc")
+        contents = tpl.substitute(**md)
 
-    # generate colors from groups
-    for color in manifest["groups"]:
-        for key in color["theme-colors"]:
-            colors[key] = f"#{color['hex']}"
+        if self.is_verbose:
+            print(contents)
 
-    # add individual colors
-    for key, hex in manifest["individual"].items():
-        colors[key] = f"#{hex}"
+        self.save_file(ROOT_DIR / "README.md", contents)
 
-    return colors
+    def save_file(self, filepath, contents: str):
+        """After confirming write contents to filepath
 
+        Params
+        ------
+        filepath (pathlib.Path): where to write file
+        contents (str): contents to write to file
+        """
+        if self.is_dryrun:
+            return
 
-def generate_theme(is_verbose: bool, is_dryrun: bool):
-    """generate and save theme file"""
+        response = input(f"Save {filepath.name}? [y/N] ").strip().lower()
+        if response not in ["y", "yes"]:
+            return
 
-    theme = {
-        "name": "Dark and Cool",
-        "type": "dark",
-        "colors": {},
-        "tokenColors": []
-    }
-    theme["colors"] = generate_theme_colors("colors.jsonc")
-    theme["tokenColors"] = load_json("tokens.jsonc")
-    contents = json.dumps(theme, indent=4)
-
-    if is_verbose:
-        pprint(theme, sort_dicts=False)
-
-    save_file(THEMES_DIR.joinpath(THEME_FILENAME), contents, is_dryrun)
-
-
-async def generate_readme(is_verbose: bool, is_dryrun: bool):
-    """generate README.md from colors.jsonc"""
-    tpl_file = Path(ROOT_DIR).joinpath("docs", "README.tpl.md")
-    tpl = Template(tpl_file.read_text())
-    md = await generate_color_markdown("colors.jsonc", is_dryrun, is_verbose)
-    contents = tpl.substitute(**md)
-
-    if is_verbose:
-        print(contents)
-
-    save_file(ROOT_DIR.joinpath("README.md"), contents, is_dryrun)
-
-
-def save_file(filepath, contents: str, is_dryrun: bool=False):
-    """After confirming write contents to filepath
-
-    Params
-    ------
-    filepath (pathlib.Path): where to write file
-    contents (str): contents to write to file
-    is_dryrun (bool, default=False): do nothing if True
-    """
-    if is_dryrun:
-        return
-
-    response = input(f"Save {filepath.name}? [y/N] ").strip().lower()
-    if response not in ["y", "yes"]:
-        return
-
-    filepath.write_text(contents)
+        filepath.write_text(contents)
 
 
 async def main():
-    """user interface"""
+    """User interface"""
 
-    is_verbose, is_dryrun, gen_theme, gen_readme = False, False, False, False
-
-    parser = argparse.ArgumentParser(description='Generate README.md and dark-cool-color-theme.json')
+    parser = argparse.ArgumentParser(
+        description=f"Generate README.md and {THEME_FILENAME}"
+    )
 
     parser.add_argument(
         "--theme", "-t",
         action=argparse.BooleanOptionalAction,
         default=False,
-        help="Generate dark-cool-color-theme.json",
+        help=f"Generate {THEME_FILENAME}",
     )
 
     parser.add_argument(
@@ -255,14 +236,13 @@ async def main():
 
     args = parser.parse_args()
 
-    is_verbose = args.verbose
-    is_dryrun = args.dry_run
+    app = App(args)
 
     if args.theme or args.all:
-        generate_theme(args.verbose, args.dry_run)
+        app.generate_theme()
 
     if args.readme or args.all:
-        await generate_readme(args.verbose, args.dry_run)
+        await app.generate_readme()
 
 
 if __name__ == "__main__":
