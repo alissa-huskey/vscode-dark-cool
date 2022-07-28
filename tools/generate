@@ -9,7 +9,9 @@ import sys
 from pprint import pprint
 import re
 from string import Template
-from subprocess import run
+import httpx
+from random import choice
+import asyncio
 
 import tabulate
 from tabulate import tabulate as table
@@ -74,26 +76,46 @@ def strip_comments(fh) -> str:
     return "\n".join(lines)
 
 
-def fetch_swatches(is_dryrun=False, is_verbose=False, *colors):
-    program = ROOT_DIR / "tools" / "fetch-swatch"
-    command = [str(program), *colors]
-
-    if is_verbose:
-        print(f"\033[2m> {' '.join(command)}\033[0m\n", file=sys.stderr)
+async def fetch_swatches(is_dryrun=False, is_verbose=False, *colors):
 
     if is_dryrun:
         return
 
-    run(command, check=True)
+    agents = [
+        "Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0",
+        "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0",
+        "Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0"
+    ]
+
+    async with httpx.AsyncClient(http2=True) as client:
+
+        for code in colors:
+
+            outfile = ROOT_DIR / "screenshots" / "swatches" / f"{code}.png"
+            url = f"https://via.placeholder.com/20/{code}/?text=+"
+
+            response = await client.get((url), headers={
+                "user-agent": choice(agents),
+            })
+
+            if "image" not in response.headers["Content-Type"]:
+                abort(f"Invalid color swatch: {url}")
+
+            outfile.write_bytes(response.content)
 
 
-def generate_color_markdown(filename: str, is_dryrun=False, is_verbose=False) -> (str, str):
+async def generate_color_markdown(filename: str, is_dryrun=False, is_verbose=False) -> (str, str):
     """Generate the markdown strings to be embedded in README.tpl.md"""
     manifest = load_json(filename)
     rows, refs, markdown = [], [], ""
 
+    for c in manifest["groups"]:
+        if not c["hex"]:
+            continue
+        c["hex"] = c["hex"].upper()
+
     colors = [clr for clr in manifest["groups"] if clr.get("readme")]
-    fetch_swatches(is_dryrun, is_verbose, *[c["hex"] for c in colors if c.get("hex")])
+    await fetch_swatches(is_dryrun, is_verbose, *[c["hex"] for c in colors if c.get("hex")])
 
     color_tpl = Template("![#${hex}][] `#${hex}`")
     ref_tpl = Template("[#${hex}]: screenshots/swatches/${hex}.png")
@@ -158,11 +180,12 @@ def generate_theme(is_verbose: bool, is_dryrun: bool):
     save_file(THEMES_DIR.joinpath(THEME_FILENAME), contents, is_dryrun)
 
 
-def generate_readme(is_verbose: bool, is_dryrun: bool):
+async def generate_readme(is_verbose: bool, is_dryrun: bool):
     """generate README.md from colors.jsonc"""
     tpl_file = Path(ROOT_DIR).joinpath("docs", "README.tpl.md")
     tpl = Template(tpl_file.read_text())
-    contents = tpl.substitute(**generate_color_markdown("colors.jsonc", is_dryrun, is_verbose))
+    md = await generate_color_markdown("colors.jsonc", is_dryrun, is_verbose)
+    contents = tpl.substitute(**md)
 
     if is_verbose:
         print(contents)
@@ -189,7 +212,7 @@ def save_file(filepath, contents: str, is_dryrun: bool=False):
     filepath.write_text(contents)
 
 
-def main():
+async def main():
     """user interface"""
 
     is_verbose, is_dryrun, gen_theme, gen_readme = False, False, False, False
@@ -214,8 +237,8 @@ def main():
         generate_theme(is_verbose, is_dryrun)
 
     if gen_readme:
-        generate_readme(is_verbose, is_dryrun)
+        await generate_readme(is_verbose, is_dryrun)
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

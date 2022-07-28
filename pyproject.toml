@@ -10,6 +10,7 @@ tabulate = "^0.8.7"
 click = "^7.1.2"
 PyYAML = "^5.4.1"
 pynvim = "^0.4.3"
+httpx = {extras = ["http2"], version = "^0.23.0"}
 
 [tool.poetry.dev-dependencies]
 
